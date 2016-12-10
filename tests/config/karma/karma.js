@@ -14,7 +14,7 @@ module.exports = function(config) {
             suite: 'unit'
         },
         files: [
-            'dist/date-time.min.js',
+            'source/*.js',
             'tests/**/*.js'
         ]
     });

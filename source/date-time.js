@@ -1,13 +1,22 @@
-(function () {
-    var months = [{
-            language: 'en',
-            full: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-            short: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-        }],
-        weekDays = [{
-            language: 'en',
-            full: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-            short: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+(function() {
+    var cultures = [{
+            culture: 'ru',
+            months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+            monthsShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'],
+            weekDays: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
+            weekDaysShort: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
+        }, {
+            culture: 'uk',
+            months: ['Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень', 'Липень', 'Серпень', 'Вересень', 'Жовтень', 'Листопад', 'Грудень'],
+            monthsShort: ['Січ', 'Лют', 'Бер', 'Квiт', 'Трав', 'Черв', 'Лип', 'Серп', 'Вер', 'Жовт', 'Лист', 'Груд'],
+            weekDays: ['Неділя', 'Понеділок', 'Вівторок', 'Середа', 'Четвер', 'П’ятниця', 'Субота'],
+            weekDaysShort: ['Нд', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
+        }, {
+            culture: 'en',
+            months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            weekDays: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+            weekDaysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
         }],
         daysPerMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
@@ -62,9 +71,21 @@
 
         // Convert month to number.
         if (month.match(/([^\u0000-\u0080]|[a-zA-Z])$/) !== null) {
-            for (var j = 0; j < months.length; j++) {
-                for (var i = 0; i < months[j].full.length; i++) {
-                    if (isMatch(month, months[j].full[i].slice(0, 3))) {
+            // for (var j = 0; j < cultures.length; j++) {
+            //     for (var i = 0; i < months[j].full.length; i++) {
+            //         if (isMatch(month, months[j].full[i].slice(0, 3))) {
+            //             finalMonth = i + 1;
+            //             break;
+            //         }
+            //     }
+            // }
+
+            for (var j = 0; j < cultures.length; j++) {
+                for (var i = 0; i < cultures[j].months.length; i++) {
+                    if (isMatch(month, 'мая')) {
+                        finalMonth = 5;
+                        break;
+                    } else if (isMatch(month, cultures[j].months[i].slice(0, 3))) {
                         finalMonth = i + 1;
                         break;
                     }
@@ -166,32 +187,32 @@
 
         // 21 Feb 15
         // 21 February 2015
-        pattern = /^(\d{1,2})(\/|-|\.|\s|)([^\u0000-\u0080]|[a-zA-Z]{1,12})(\/|-|\.|\s|)(\d{2,4}\b)/;
+        pattern = /^(\d{1,2})(\/|-|\.|\s|)(([^\u0000-\u0080]|[a-zA-Z]){1,12})(\/|-|\.|\s|)(\d{2,4}\b)/;
 
         if (value.match(pattern) !== null) {
             parts = pattern.exec(value);
 
-            return getTotalDate(parts[5], parts[3], parts[1]);
+            return getTotalDate(parts[6], parts[3], parts[1]);
         }
 
         // Feb 21, 15
         // Feb 21, 2015
-        pattern = /([^\u0000-\u0080]|[a-zA-Z]{3})(\s|)(\d{1,2})(,)(\s|)(\d{2,4})$/;
+        pattern = /(([^\u0000-\u0080]|[a-zA-Z]){3})(\s|)(\d{1,2})(,)(\s|)(\d{2,4})$/;
 
         if (value.match(pattern) !== null) {
             parts = pattern.exec(value);
 
-            return getTotalDate(parts[6], parts[1], parts[3]);
+            return getTotalDate(parts[7], parts[1], parts[4]);
         }
 
         // Feb 21 15
         // February 21 2015
-        pattern = /^([^\u0000-\u0080]|[a-zA-Z]{1,12})(\/|-|\.|\s|)(\d{1,2})(\/|-|\.|\s|)(\d{2,4}\b)/;
+        pattern = /^(([^\u0000-\u0080]|[a-zA-Z]){1,12})(\/|-|\.|\s|)(\d{1,2})(\/|-|\.|\s|)(\d{2,4}\b)/;
 
         if (value.match(pattern) !== null) {
             parts = pattern.exec(value);
 
-            return getTotalDate(parts[5], parts[1], parts[3]);
+            return getTotalDate(parts[6], parts[1], parts[4]);
         }
 
         // 2015-02-21
@@ -219,12 +240,12 @@
         }
 
         // 2015-February-21
-        pattern = /^(\d{4})(\/|-|\.|\s|)([^\u0000-\u0080]|[a-zA-Z]{1,12})(\/|-|\.|\s|)(\d{1,2})$/;
+        pattern = /^(\d{4})(\/|-|\.|\s|)(([^\u0000-\u0080]|[a-zA-Z]){1,12})(\/|-|\.|\s|)(\d{1,2})$/;
 
         if (value.match(pattern) !== null) {
             parts = pattern.exec(value);
 
-            return getTotalDate(parts[1], parts[3], parts[5]);
+            return getTotalDate(parts[1], parts[3], parts[6]);
         }
 
         // 2015-02-21T10:00:00Z
@@ -332,7 +353,7 @@
 
         format = format || 'yyyy-MM-ddTHH:mm:ssZ';
 
-        var languageIndex = 0,
+        var languageIndex = 2,
             timeZone = offsetToTimeZone(offset),
             _date = isDateTime(date) ? date.toDate() : date,
             // Possible formats of date parts (day, month, year).
@@ -387,13 +408,13 @@
                 case datePartFormats.d[2]:
                     // ddd
                     {
-                        datePart = weekDays[languageIndex].short[dayOfWeek];
+                        datePart = cultures[languageIndex].weekDaysShort[dayOfWeek];
                         break;
                     }
                 case datePartFormats.d[3]:
                     // dddd
                     {
-                        datePart = weekDays[languageIndex].full[dayOfWeek];
+                        datePart = cultures[languageIndex].weekDays[dayOfWeek];
                         break;
                     }
                 case datePartFormats.M[0]:
@@ -411,13 +432,13 @@
                 case datePartFormats.M[2]:
                     // MMM
                     {
-                        datePart = months[languageIndex].short[month];
+                        datePart = cultures[languageIndex].monthsShort[month];
                         break;
                     }
                 case datePartFormats.M[3]:
                     // MMMM
                     {
-                        datePart = months[languageIndex].full[month];
+                        datePart = cultures[languageIndex].months[month];
                         break;
                     }
                 case datePartFormats.y[0]:
