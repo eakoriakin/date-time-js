@@ -1,0 +1,8 @@
+node_modules
+npm-debug.log
+source
+.gitignore
+.npmignore
+gulpfile.js
+tests
+.jshintrc

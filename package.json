@@ -1,0 +1,36 @@
+{
+    "version": "0.0.1",
+    "name": "date-time-js",
+    "description": "Parses, formats and manipulates dates in various cultures.",
+    "author": {
+        "name": "Evgenii Koriakin",
+        "url": "https://github.com/eakoriakin"
+    },
+    "license": "(MIT OR Apache-2.0)",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/eakoriakin/date-time-js"
+    },
+    "devDependencies": {
+        "del": "2.2.2",
+        "run-sequence": "1.2.2",
+        "gulp": "3.9.1",
+        "gulp-uglify": "2.0.0",
+        "gulp-concat": "2.6.1",
+        "karma": "1.3.0",
+        "karma-chrome-launcher": "2.0.0",
+        "karma-jasmine": "1.1.0",
+        "karma-junit-reporter": "1.2.0",
+        "gulp-jshint": "2.0.4"
+    },
+    "keywords": [
+        "JavaScript",
+        "date",
+        "time",
+        "date and time",
+        "parse",
+        "format",
+        "manipulate",
+        "culture"
+    ]
+}
