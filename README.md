@@ -51,12 +51,12 @@ Supports cultures: en-GB, en-US, ru-RU, uk-UA.
 
 ### Comparison
 
-    new DateTime('2016-09-26T00:00:00Z').difference('2016-09-26T00:00:01Z') // -1000
-    new DateTime('2016-09-26T00:00:00Z').isEqual('2016-09-26T00:00:00Z') // true
-    new DateTime('2016-09-26T00:00:00Z').isLess('2016-09-26T00:00:00Z') // false
-    new DateTime('2016-09-26T00:00:00Z').isLessOrEqual('2016-09-26T00:00:01Z') // true
-    new DateTime('2016-09-26T00:00:00Z').isGreater('2016-09-26T00:00:00Z') // false
-    new DateTime('2016-09-26T00:00:00Z').isGreaterOrEqual('2016-09-26T00:00:00Z') // true
+    new DateTime('2016-09-26T00:00:00Z').difference('2016-09-26T00:00:01Z')                        // -1000
+    new DateTime('2016-09-26T00:00:00Z').isEqual('2016-09-26T00:00:00Z')                           // true
+    new DateTime('2016-09-26T00:00:00Z').isLess('2016-09-26T00:00:00Z')                            // false
+    new DateTime('2016-09-26T00:00:00Z').isLessOrEqual('2016-09-26T00:00:01Z')                     // true
+    new DateTime('2016-09-26T00:00:00Z').isGreater('2016-09-26T00:00:00Z')                         // false
+    new DateTime('2016-09-26T00:00:00Z').isGreaterOrEqual('2016-09-26T00:00:00Z')                  // true
     new DateTime('2016-08-15T00:00:00Z').isBetween('2016-08-01T00:00:00Z', '2016-09-01T00:00:00Z') // true
 
 ### Formatting
