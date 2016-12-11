@@ -56,22 +56,22 @@ Supports cultures: en-GB, en-US, ru-RU, uk-UA.
     
 **Standard Date and Time Format Specifiers**
 
-| Format | Description | Example |
+| Format specifier | Description | Examples |
 | :---- | :---- | :---- |
-| fff | The milliseconds, from 000 to 999. | "000" to "999" |
-| s | The second, from 0 through 59. | "0" to "59" |
-| ss | The second, from 00 through 59. | "00" to "59" | 
-| m | The minute, from 0 through 59. | "0"  or "59" | 
-| mm | The minute, from 00 through 59. | "00" or "59" | 
-| HH | The hour, using a 24-hour clock from 00 to 23. | "00" to "23" | 
-| d | The day of the month, from 1 through 31. | "1"  to "31" | 
-| dd | The day of the month, from 01 through 31. | "01" to "31" | 
-| ddd | The abbreviated name of the day of the week. | 2015-02-21T13:45:30Z -> Mon (en-US) 2015-02-21T13:45:30Z -> Пн (ru-RU) |  
-| dddd | Full day name. | "Monday" to "Sunday" | 
-| M | Month between 1-12. | "1" to "12" | 
-| MM | Month with leading zero. | "01" to "12" | 
-| MMM | Short month name. | "Jan" to "Dec" | 
-| MMMM | Full month name. | "January" to "December" | 
-| yy | Two-digit year. | "87" or "15" | 
-| yyyy | Four-digit year. | "1987" or "2015" | 
+| fff | The milliseconds, from 000 to 999. | 2015-02-01T03:05:09.499Z -> 499 |
+| s | The second, from 0 through 59. | 2015-02-01T03:05:09Z -> 9<br/>2015-02-21T13:45:30Z -> 30 |
+| ss | The second, from 00 through 59. | 2015-02-01T03:05:09Z -> 09<br/>2015-02-21T13:45:30Z -> 30 | 
+| m | The minute, from 0 through 59. | 2015-02-01T03:05:30Z -> 5<br/>2015-02-21T13:45:30Z -> 45 | 
+| mm | The minute, from 00 through 59. | 2015-02-01T03:05:30Z -> 05<br/>2015-02-21T13:45:30Z -> 45 | 
+| HH | The hour, using a 24-hour clock from 00 to 23. | 2015-02-01T03:45:30Z -> 03<br/>2015-02-21T13:45:30Z -> 13 | 
+| d | The day of the month, from 1 through 31. | 2015-02-01T13:45:30Z -> 1<br/>2015-02-21T13:45:30Z -> 21 | 
+| dd | The day of the month, from 01 through 31. | 2015-02-01T13:45:30Z -> 01<br/>2015-02-21T13:45:30Z -> 21 | 
+| ddd | The abbreviated name of the day of the week. | 2015-02-21T13:45:30Z -> Mon (en-US)<br/>2015-02-21T13:45:30Z -> пн (ru-RU) |  
+| dddd | The full name of the day of the week. | 2015-02-21T13:45:30Z -> Monday (en-US)<br/>2015-02-21T13:45:30Z -> понедельник (ru-RU) | 
+| M | The month, from 1 through 12. | 2015-02-21T13:45:30Z -> 2 | 
+| MM | The month, from 01 through 12. | 2015-02-21T13:45:30Z -> 02 | 
+| MMM | The abbreviated name of the month. | 2015-02-21T13:45:30Z -> Feb (en-US)<br/>2015-02-21T13:45:30Z -> фев (ru-RU) | 
+| MMMM | The full name of the month. | 2015-02-21T13:45:30Z -> February (en-US)<br/>2015-02-21T13:45:30Z -> февраль (ru-RU) | 
+| yy | The year, from 00 to 99. | 1987-02-21T13:45:30Z -> 87<br/>2015-02-21T13:45:30Z -> 15<br/>2000-02-21T13:45:30Z -> 00 | 
+| yyyy | The year as a four-digit number. | 1987-02-21T13:45:30Z -> 1987<br/>2015-02-21T13:45:30Z -> 2015<br/>2000-02-21T13:45:30Z -> 2000 | 
     
