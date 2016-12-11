@@ -31,28 +31,38 @@ Download it using npm:
 
 Supports cultures: en-GB, en-US, ru-RU, uk-UA.
 
-    DateTime.parse('7').format()                 // '2015-02-07T00:00:00Z' (Current year is 2015 and month is February)
-    DateTime.parse('1/7').format()               // '2015-07-01T00:00:00Z' (Current year is 2015)
-    DateTime.parse('1/7/87').format()            // '1987-07-01T00:00:00Z'
-    DateTime.parse('1/7/1987').format()          // '1987-07-01T00:00:00Z'
+    new DateTime('7').format()                 // '2015-02-07T00:00:00Z' (Current year is 2015 and month is February)
+    new DateTime('1/7').format()               // '2015-07-01T00:00:00Z' (Current year is 2015)
+    new DateTime('1/7/87').format()            // '1987-07-01T00:00:00Z'
+    new DateTime('1/7/1987').format()          // '1987-07-01T00:00:00Z'
     
-    DateTime.parse('2015/1/7', 'en-GB').format() // '2015-07-01T00:00:00Z'
-    DateTime.parse('2015/1/7', 'en-US').format() // '2015-01-07T00:00:00Z'
+    new DateTime('2015/1/7', 'en-GB').format() // '2015-07-01T00:00:00Z'
+    new DateTime('2015/1/7', 'en-US').format() // '2015-01-07T00:00:00Z'
     
-    DateTime.parse('21 Feb 15').format()         // '2015-02-21T00:00:00Z'
-    DateTime.parse('21 Фев 15').format()         // '2015-02-21T00:00:00Z'
-    DateTime.parse('21 Лют 15').format()         // '2015-02-21T00:00:00Z'
+    new DateTime('21 Feb 15').format()         // '2015-02-21T00:00:00Z'
+    new DateTime('21 Фев 15').format()         // '2015-02-21T00:00:00Z'
+    new DateTime('21 Лют 15').format()         // '2015-02-21T00:00:00Z'
     
-    DateTime.parse('21 February 15').format()    // '2015-02-21T00:00:00Z'
-    DateTime.parse('21 Февраль 15').format()     // '2015-02-21T00:00:00Z'
-    DateTime.parse('21 Лютий 15').format()       // '2015-02-21T00:00:00Z'
+    new DateTime('21 February 15').format()    // '2015-02-21T00:00:00Z'
+    new DateTime('21 Февраль 15').format()     // '2015-02-21T00:00:00Z'
+    new DateTime('21 Лютий 15').format()       // '2015-02-21T00:00:00Z'
     
-    DateTime.parse('Feb 21, 15').format()        // '2015-02-21T00:00:00Z'
-    
+    new DateTime('Feb 21, 15').format()        // '2015-02-21T00:00:00Z'
+
+### Comparison
+
+    new DateTime('2016-09-26T00:00:00Z').difference('2016-09-26T00:00:01Z') // -1000
+    new DateTime('2016-09-26T00:00:00Z').isEqual('2016-09-26T00:00:00Z') // true
+    new DateTime('2016-09-26T00:00:00Z').isLess('2016-09-26T00:00:00Z') // false
+    new DateTime('2016-09-26T00:00:00Z').isLessOrEqual('2016-09-26T00:00:01Z') // true
+    new DateTime('2016-09-26T00:00:00Z').isGreater('2016-09-26T00:00:00Z') // false
+    new DateTime('2016-09-26T00:00:00Z').isGreaterOrEqual('2016-09-26T00:00:00Z') // true
+    new DateTime('2016-08-15T00:00:00Z').isBetween('2016-08-01T00:00:00Z', '2016-09-01T00:00:00Z') // true
+
 ### Formatting
 
-    DateTime.parse('1/7/1987').format()            // '1987-07-01T00:00:00Z'
-    DateTime.parse('1/7/1987').format('yyyy-M-dd') // '1987-7-01'
+    new DateTime('1/7/1987').format()            // '1987-07-01T00:00:00Z'
+    new DateTime('1/7/1987').format('yyyy-M-dd') // '1987-7-01'
     
 **Standard date and time format specifiers**
 
