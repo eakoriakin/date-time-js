@@ -54,7 +54,7 @@ Supports cultures: en-GB, en-US, ru-RU, uk-UA.
     DateTime.parse('1/7/1987').format()            // '1987-07-01T00:00:00Z'
     DateTime.parse('1/7/1987').format('yyyy-M-dd') // '1987-7-01'
     
-**Standard Date and Time Format Specifiers**
+**Standard date and time format specifiers**
 
 | Format specifier | Description | Examples |
 | :---- | :---- | :---- |
