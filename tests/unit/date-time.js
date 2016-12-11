@@ -270,7 +270,7 @@ describe('DateTime', function() {
             expect(DateTime.parse('2015.February.21').format()).toEqual('2015-02-21T00:00:00Z');
         });
 
-        it('parses date in yyyy-MM-ddTHH:mm:ss.fffZ format', function() {
+        it('parses date in yyyy-MM-ddTHH:mm:ss.fffK format', function() {
             var date = DateTime.parse('2015-02-21T10:00:00Z');
             expect(date.format()).toEqual('2015-02-21T10:00:00Z');
             expect(date.offset()).toEqual(0);
@@ -282,7 +282,7 @@ describe('DateTime', function() {
             expect(date.millisecond()).toEqual(0);
 
             var date = DateTime.parse('2015-02-21T10:00:00.500Z');
-            expect(date.format('yyyy-MM-ddTHH:mm:ss.fffZ')).toEqual('2015-02-21T10:00:00.500Z');
+            expect(date.format('yyyy-MM-ddTHH:mm:ss.fffK')).toEqual('2015-02-21T10:00:00.500Z');
             expect(date.offset()).toEqual(0);
             expect(date.millisecond()).toEqual(500);
         });
@@ -337,9 +337,9 @@ describe('DateTime', function() {
         it('formats date using format', function() {
             var date = new Date(2015, 1, 7, 12, 0, 7);
             expect(new DateTime(date).format('yyyy-MM-dd')).toEqual('2015-02-07');
-            expect(new DateTime(date).format('yyyy-MM-dd HH:mm:ssZ')).toEqual('2015-02-07 12:00:07Z');
-            expect(new DateTime(date).offset(180).format('yyyy-MM-dd HH:mm:ssZ')).toEqual('2015-02-07 12:00:07+03:00');
-            expect(new DateTime(date).offset(-180).format('yyyy-MM-dd HH:mm:ssZ')).toEqual('2015-02-07 12:00:07-03:00');
+            expect(new DateTime(date).format('yyyy-MM-dd HH:mm:ssK')).toEqual('2015-02-07 12:00:07Z');
+            expect(new DateTime(date).offset(180).format('yyyy-MM-dd HH:mm:ssK')).toEqual('2015-02-07 12:00:07+03:00');
+            expect(new DateTime(date).offset(-180).format('yyyy-MM-dd HH:mm:ssK')).toEqual('2015-02-07 12:00:07-03:00');
         });
 
         it('supports day format', function() {
@@ -368,6 +368,12 @@ describe('DateTime', function() {
             var date = new Date(2015, 1, 7, 12, 0, 42);
             date.setMilliseconds(500);
             expect(new DateTime(date).format('HH:mm:ss.fff')).toEqual('12:00:42.500');
+        });
+
+        it('supports time zone format', function() {
+            var date = new Date(2015, 1, 7);
+            expect(new DateTime(date).format('K')).toEqual('Z');
+            expect(new DateTime(date).offset(120).format('K')).toEqual('+02:00');
         });
     });
 
@@ -580,10 +586,10 @@ describe('DateTime', function() {
         it('subtracts milliseconds', function() {
             var date = new DateTime('2015-02-21T10:45:30.500Z');
             date.subtract(2, 'millisecond');
-            expect(date.format('yyyy-MM-ddTHH:mm:ss.fffZ')).toEqual('2015-02-21T10:45:30.498Z');
+            expect(date.format('yyyy-MM-ddTHH:mm:ss.fffK')).toEqual('2015-02-21T10:45:30.498Z');
 
             date.subtract(499, 'millisecond');
-            expect(date.format('yyyy-MM-ddTHH:mm:ss.fffZ')).toEqual('2015-02-21T10:45:29.999Z');
+            expect(date.format('yyyy-MM-ddTHH:mm:ss.fffK')).toEqual('2015-02-21T10:45:29.999Z');
         });
 
         // Seconds.
@@ -776,23 +782,23 @@ describe('DateTime', function() {
 
     describe('startOf method', function() {
         it('sets date to the start of a unit of time', function() {
-            expect(new DateTime('2015-02-21T10:45:35.500Z').startOf('second').format('yyyy-MM-ddTHH:mm:ss.fffZ')).toEqual('2015-02-21T10:45:35.000Z');
-            expect(new DateTime('2015-02-21T10:45:35.500Z').startOf('minute').format('yyyy-MM-ddTHH:mm:ss.fffZ')).toEqual('2015-02-21T10:45:00.000Z');
-            expect(new DateTime('2015-02-21T10:45:35.500Z').startOf('hour').format('yyyy-MM-ddTHH:mm:ss.fffZ')).toEqual('2015-02-21T10:00:00.000Z');
-            expect(new DateTime('2015-02-21T10:45:35.500Z').startOf('day').format('yyyy-MM-ddTHH:mm:ss.fffZ')).toEqual('2015-02-21T00:00:00.000Z');
-            expect(new DateTime('2015-02-21T10:45:35.500Z').startOf('month').format('yyyy-MM-ddTHH:mm:ss.fffZ')).toEqual('2015-02-01T00:00:00.000Z');
-            expect(new DateTime('2015-02-21T10:45:35.500Z').startOf('year').format('yyyy-MM-ddTHH:mm:ss.fffZ')).toEqual('2015-01-01T00:00:00.000Z');
+            expect(new DateTime('2015-02-21T10:45:35.500Z').startOf('second').format('yyyy-MM-ddTHH:mm:ss.fffK')).toEqual('2015-02-21T10:45:35.000Z');
+            expect(new DateTime('2015-02-21T10:45:35.500Z').startOf('minute').format('yyyy-MM-ddTHH:mm:ss.fffK')).toEqual('2015-02-21T10:45:00.000Z');
+            expect(new DateTime('2015-02-21T10:45:35.500Z').startOf('hour').format('yyyy-MM-ddTHH:mm:ss.fffK')).toEqual('2015-02-21T10:00:00.000Z');
+            expect(new DateTime('2015-02-21T10:45:35.500Z').startOf('day').format('yyyy-MM-ddTHH:mm:ss.fffK')).toEqual('2015-02-21T00:00:00.000Z');
+            expect(new DateTime('2015-02-21T10:45:35.500Z').startOf('month').format('yyyy-MM-ddTHH:mm:ss.fffK')).toEqual('2015-02-01T00:00:00.000Z');
+            expect(new DateTime('2015-02-21T10:45:35.500Z').startOf('year').format('yyyy-MM-ddTHH:mm:ss.fffK')).toEqual('2015-01-01T00:00:00.000Z');
         });
     });
 
     describe('endOf method', function() {
         it('sets date to the start of a unit of time', function() {
-            expect(new DateTime('2015-01-01T00:00:00.000Z').endOf('second').format('yyyy-MM-ddTHH:mm:ss.fffZ')).toEqual('2015-01-01T00:00:00.999Z');
-            expect(new DateTime('2015-01-01T00:00:00.000Z').endOf('minute').format('yyyy-MM-ddTHH:mm:ss.fffZ')).toEqual('2015-01-01T00:00:59.999Z');
-            expect(new DateTime('2015-01-01T00:00:00.000Z').endOf('hour').format('yyyy-MM-ddTHH:mm:ss.fffZ')).toEqual('2015-01-01T00:59:59.999Z');
-            expect(new DateTime('2015-01-01T00:00:00.000Z').endOf('day').format('yyyy-MM-ddTHH:mm:ss.fffZ')).toEqual('2015-01-01T23:59:59.999Z');
-            expect(new DateTime('2015-01-01T00:00:00.000Z').endOf('month').format('yyyy-MM-ddTHH:mm:ss.fffZ')).toEqual('2015-01-31T23:59:59.999Z');
-            expect(new DateTime('2015-01-01T00:00:00.000Z').endOf('year').format('yyyy-MM-ddTHH:mm:ss.fffZ')).toEqual('2015-12-31T23:59:59.999Z');
+            expect(new DateTime('2015-01-01T00:00:00.000Z').endOf('second').format('yyyy-MM-ddTHH:mm:ss.fffK')).toEqual('2015-01-01T00:00:00.999Z');
+            expect(new DateTime('2015-01-01T00:00:00.000Z').endOf('minute').format('yyyy-MM-ddTHH:mm:ss.fffK')).toEqual('2015-01-01T00:00:59.999Z');
+            expect(new DateTime('2015-01-01T00:00:00.000Z').endOf('hour').format('yyyy-MM-ddTHH:mm:ss.fffK')).toEqual('2015-01-01T00:59:59.999Z');
+            expect(new DateTime('2015-01-01T00:00:00.000Z').endOf('day').format('yyyy-MM-ddTHH:mm:ss.fffK')).toEqual('2015-01-01T23:59:59.999Z');
+            expect(new DateTime('2015-01-01T00:00:00.000Z').endOf('month').format('yyyy-MM-ddTHH:mm:ss.fffK')).toEqual('2015-01-31T23:59:59.999Z');
+            expect(new DateTime('2015-01-01T00:00:00.000Z').endOf('year').format('yyyy-MM-ddTHH:mm:ss.fffK')).toEqual('2015-12-31T23:59:59.999Z');
         });
     });
 });

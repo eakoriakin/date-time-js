@@ -1,18 +1,18 @@
 (function() {
     var cultures = [{
-            culture: 'ru',
+            culture: 'ru-RU',
             months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
             monthsShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'],
             weekDays: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
             weekDaysShort: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
         }, {
-            culture: 'uk',
+            culture: 'uk-UA',
             months: ['Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень', 'Липень', 'Серпень', 'Вересень', 'Жовтень', 'Листопад', 'Грудень'],
             monthsShort: ['Січ', 'Лют', 'Бер', 'Квiт', 'Трав', 'Черв', 'Лип', 'Серп', 'Вер', 'Жовт', 'Лист', 'Груд'],
             weekDays: ['Неділя', 'Понеділок', 'Вівторок', 'Середа', 'Четвер', 'П’ятниця', 'Субота'],
             weekDaysShort: ['Нд', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
         }, {
-            culture: 'en',
+            culture: 'en-GB',
             months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
             monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
             weekDays: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
@@ -351,7 +351,7 @@
             }
         }
 
-        format = format || 'yyyy-MM-ddTHH:mm:ssZ';
+        format = format || 'yyyy-MM-ddTHH:mm:ssK';
 
         var languageIndex = 2,
             timeZone = offsetToTimeZone(offset),
@@ -365,7 +365,7 @@
                 d: ['d', 'dd', 'ddd', 'dddd'],
                 M: ['M', 'MM', 'MMM', 'MMMM'],
                 y: ['yy', 'yyyy'],
-                Z: ['Z']
+                K: ['K']
             },
             day = _date.getDate(),
             dayOfWeek = _date.getDay(),
@@ -477,8 +477,8 @@
                         datePart = formatNumber(milliseconds, 3);
                         break;
                     }
-                case datePartFormats.Z[0]:
-                    // Z
+                case datePartFormats.K[0]:
+                    // K
                     {
                         datePart = timeZone || 'Z';
                         break;
@@ -501,7 +501,7 @@
             minutes: formatDatePart(datePartFormats.m[checkDatePart('m')]),
             seconds: formatDatePart(datePartFormats.s[checkDatePart('s')]),
             milliseconds: formatDatePart(datePartFormats.f[checkDatePart('f')]),
-            timeZone: formatDatePart(datePartFormats.Z[0]),
+            timeZone: formatDatePart(datePartFormats.K[0]),
             separator: /^\w+([^\w])/.exec(format)
         };
 
@@ -514,7 +514,7 @@
             .replace(/m+/, dateParts.minutes)
             .replace(/s+/, dateParts.seconds)
             .replace(/f+/, dateParts.milliseconds)
-            .replace(/Z+/, dateParts.timeZone);
+            .replace(/K+/, dateParts.timeZone);
     };
 
     var parseTimeZone = function(timeZone) {
