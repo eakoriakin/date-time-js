@@ -74,4 +74,5 @@ Supports cultures: en-GB, en-US, ru-RU, uk-UA.
 | MMMM | The full name of the month. | 2015-02-21T13:45:30Z -> February (en-US)<br/>2015-02-21T13:45:30Z -> февраль (ru-RU) | 
 | yy | The year, from 00 to 99. | 1987-02-21T13:45:30Z -> 87<br/>2015-02-21T13:45:30Z -> 15<br/>2000-02-21T13:45:30Z -> 00 | 
 | yyyy | The year as a four-digit number. | 1987-02-21T13:45:30Z -> 1987<br/>2015-02-21T13:45:30Z -> 2015<br/>2000-02-21T13:45:30Z -> 2000 | 
+| K | Time zone information. | 2015-02-21T13:45:30Z -> Z<br/>2015-02-21T13:45:30-07:00 -> -07:00 | 
     
