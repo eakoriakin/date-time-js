@@ -58,15 +58,15 @@ Supports cultures: en-GB, en-US, ru-RU, uk-UA.
 
 | Format | Description | Example |
 | :---- | :---- | :---- |
-| fff | Millisecond between 0-999 with leading zeros. | "0" to "999" |
-| s | Second between 0-59. | "0" to "59" |
-| ss | Second with leading zero. | "00" to "59" | 
-| m | Minute between 0-59. | "0"  or "59" | 
-| mm | Minute with leading zero. | "00" or "59" | 
-| HH | Hour between 0-23 with leading zero. | "00" to "23" | 
-| d | Day between 1 and 31. | "1"  to "31" | 
-| dd | Day with leading zero. | "01" to "31" | 
-| ddd | Short day name. | "Mon" to "Sun" |  
+| fff | The milliseconds, from 000 to 999. | "000" to "999" |
+| s | The second, from 0 through 59. | "0" to "59" |
+| ss | The second, from 00 through 59. | "00" to "59" | 
+| m | The minute, from 0 through 59. | "0"  or "59" | 
+| mm | The minute, from 00 through 59. | "00" or "59" | 
+| HH | The hour, using a 24-hour clock from 00 to 23. | "00" to "23" | 
+| d | The day of the month, from 1 through 31. | "1"  to "31" | 
+| dd | The day of the month, from 01 through 31. | "01" to "31" | 
+| ddd | The abbreviated name of the day of the week. | 2015-02-21T13:45:30Z -> Mon (en-US) 2015-02-21T13:45:30Z -> Пн (ru-RU) |  
 | dddd | Full day name. | "Monday" to "Sunday" | 
 | M | Month between 1-12. | "1" to "12" | 
 | MM | Month with leading zero. | "01" to "12" | 
