@@ -31,28 +31,80 @@ Download it using npm:
 
 Supports cultures: en-GB, en-US, ru-RU, uk-UA.
 
-    DateTime.parse('7').format()                 // '2015-02-07T00:00:00Z' (Current year is 2015 and month is February)
-    DateTime.parse('1/7').format()               // '2015-07-01T00:00:00Z' (Current year is 2015)
-    DateTime.parse('1/7/87').format()            // '1987-07-01T00:00:00Z'
-    DateTime.parse('1/7/1987').format()          // '1987-07-01T00:00:00Z'
+    new DateTime('7')                 // '2015-02-07T00:00:00Z' (Current year is 2015 and month is February)
+    new DateTime('1/7')               // '2015-07-01T00:00:00Z' (Current year is 2015)
+    new DateTime('1/7/87')            // '1987-07-01T00:00:00Z'
+    new DateTime('1/7/1987')          // '1987-07-01T00:00:00Z'
     
-    DateTime.parse('2015/1/7', 'en-GB').format() // '2015-07-01T00:00:00Z'
-    DateTime.parse('2015/1/7', 'en-US').format() // '2015-01-07T00:00:00Z'
+    new DateTime('2015/1/7', 'en-GB') // '2015-07-01T00:00:00Z'
+    new DateTime('2015/1/7', 'en-US') // '2015-01-07T00:00:00Z'
     
-    DateTime.parse('21 Feb 15').format()         // '2015-02-21T00:00:00Z'
-    DateTime.parse('21 Фев 15').format()         // '2015-02-21T00:00:00Z'
-    DateTime.parse('21 Лют 15').format()         // '2015-02-21T00:00:00Z'
+    new DateTime('21 Feb 15')         // '2015-02-21T00:00:00Z'
+    new DateTime('21 Фев 15')         // '2015-02-21T00:00:00Z'
+    new DateTime('21 Лют 15')         // '2015-02-21T00:00:00Z'
     
-    DateTime.parse('21 February 15').format()    // '2015-02-21T00:00:00Z'
-    DateTime.parse('21 Февраль 15').format()     // '2015-02-21T00:00:00Z'
-    DateTime.parse('21 Лютий 15').format()       // '2015-02-21T00:00:00Z'
+    new DateTime('21 February 15')    // '2015-02-21T00:00:00Z'
+    new DateTime('21 Февраль 15')     // '2015-02-21T00:00:00Z'
+    new DateTime('21 Лютий 15')       // '2015-02-21T00:00:00Z'
     
-    DateTime.parse('Feb 21, 15').format()        // '2015-02-21T00:00:00Z'
+    new DateTime('Feb 21, 15')        // '2015-02-21T00:00:00Z'
+
+### Manipulation
+
+**Addition**
+
+    new DateTime('2015-02-21T10:45:30.000Z').add(2, 'millisecond')      // '2015-02-21T10:45:30.002Z'
+    new DateTime('2015-02-21T10:45:30Z').add(2, 'second')               // '2015-02-21T10:45:32Z'
+    new DateTime('2015-02-21T10:45:30Z').add(2, 'minute')               // '2015-02-21T10:47:30Z'
+    new DateTime('2015-02-21T10:45:30Z').add(2, 'hour')                 // '2015-02-21T12:45:30Z'
+    new DateTime('2015-02-21T10:45:30Z').add(2, 'day')                  // '2015-02-23T10:45:30Z'
+    new DateTime('2015-02-21T10:45:30Z').add(2, 'month')                // '2015-04-21T10:45:30Z'
+    new DateTime('2015-02-21T10:45:30Z').add(2, 'year')                 // '2017-02-21T10:45:30Z'
+
+**Subtraction**
+
+    new DateTime('2015-02-21T10:45:30.500Z').subtract(2, 'millisecond') // '2015-02-21T10:45:30.498Z'
+    new DateTime('2015-02-21T10:45:30Z').subtract(2, 'second')          // '2015-02-21T10:45:28Z'
+    new DateTime('2015-02-21T10:45:30Z').subtract(2, 'minute')          // '2015-02-21T10:43:30Z'
+    new DateTime('2015-02-21T10:45:30Z').subtract(2, 'hour')            // '2015-02-21T08:45:30Z'
+    new DateTime('2015-02-21T10:45:30Z').subtract(2, 'day')             // '2015-02-19T10:45:30Z'
+    new DateTime('2015-02-21T10:45:30Z').subtract(1, 'month')           // '2015-01-21T10:45:30Z'
+    new DateTime('2015-02-21T10:45:30Z').subtract(2, 'year')            // '2013-02-21T10:45:30Z'
+
+**Getting**
     
+    new DateTime('2015-02-21T10:45:30.500Z').millisecond()              // 500
+    new DateTime('2015-02-21T10:45:30Z').second()                       // 30
+    new DateTime('2015-02-21T10:45:00Z').minute()                       // 45
+    new DateTime('2015-02-21T10:45:00Z').hour()                         // 10
+    new DateTime('2015-02-21T10:45:00Z').date()                         // 21
+    new DateTime('2015-02-21T10:45:00Z').month()                        // 1
+    new DateTime('2015-02-21T10:45:00Z').year()                         // 2015
+
+**Setting**
+
+    new DateTime('2015-02-21T10:45:30.000Z').millisecond(10)            // '2015-02-21T10:45:30.010Z'
+    new DateTime('2015-02-21T10:45:30Z').second(10)                     // '2015-02-21T10:45:10Z'
+    new DateTime('2015-02-21T10:45:30Z').minute(10)                     // '2015-02-21T10:10:30Z'
+    new DateTime('2015-02-21T10:45:30Z').hour(20)                       // '2015-02-21T20:45:30Z'
+    new DateTime('2015-02-21T10:45:30Z').date(25)                       // '2015-02-25T10:45:30Z'
+    new DateTime('2015-02-21T10:45:30Z').month(3)                       // '2015-04-21T10:45:30Z'
+    new DateTime('2015-02-21T10:45:30Z').year(2010)                     // '2010-02-21T10:45:30Z'
+
+### Comparison
+
+    new DateTime('2016-09-26T00:00:00Z').difference('2016-09-26T00:00:01Z')                        // -1000
+    new DateTime('2016-09-26T00:00:00Z').isEqual('2016-09-26T00:00:00Z')                           // true
+    new DateTime('2016-09-26T00:00:00Z').isLess('2016-09-26T00:00:00Z')                            // false
+    new DateTime('2016-09-26T00:00:00Z').isLessOrEqual('2016-09-26T00:00:01Z')                     // true
+    new DateTime('2016-09-26T00:00:00Z').isGreater('2016-09-26T00:00:00Z')                         // false
+    new DateTime('2016-09-26T00:00:00Z').isGreaterOrEqual('2016-09-26T00:00:00Z')                  // true
+    new DateTime('2016-08-15T00:00:00Z').isBetween('2016-08-01T00:00:00Z', '2016-09-01T00:00:00Z') // true
+
 ### Formatting
 
-    DateTime.parse('1/7/1987').format()            // '1987-07-01T00:00:00Z'
-    DateTime.parse('1/7/1987').format('yyyy-M-dd') // '1987-7-01'
+    new DateTime('1/7/1987').format()            // '1987-07-01T00:00:00Z'
+    new DateTime('1/7/1987').format('yyyy-M-dd') // '1987-7-01'
     
 **Standard date and time format specifiers**
 
@@ -60,19 +112,19 @@ Supports cultures: en-GB, en-US, ru-RU, uk-UA.
 | :---- | :---- | :---- |
 | fff | The milliseconds, from 000 to 999. | 2015-02-01T03:05:09.499Z -> 499 |
 | s | The second, from 0 through 59. | 2015-02-01T03:05:09Z -> 9<br/>2015-02-21T13:45:30Z -> 30 |
-| ss | The second, from 00 through 59. | 2015-02-01T03:05:09Z -> 09<br/>2015-02-21T13:45:30Z -> 30 | 
-| m | The minute, from 0 through 59. | 2015-02-01T03:05:30Z -> 5<br/>2015-02-21T13:45:30Z -> 45 | 
-| mm | The minute, from 00 through 59. | 2015-02-01T03:05:30Z -> 05<br/>2015-02-21T13:45:30Z -> 45 | 
-| HH | The hour, using a 24-hour clock from 00 to 23. | 2015-02-01T03:45:30Z -> 03<br/>2015-02-21T13:45:30Z -> 13 | 
-| d | The day of the month, from 1 through 31. | 2015-02-01T13:45:30Z -> 1<br/>2015-02-21T13:45:30Z -> 21 | 
-| dd | The day of the month, from 01 through 31. | 2015-02-01T13:45:30Z -> 01<br/>2015-02-21T13:45:30Z -> 21 | 
-| ddd | The abbreviated name of the day of the week. | 2015-02-21T13:45:30Z -> Mon (en-US)<br/>2015-02-21T13:45:30Z -> пн (ru-RU) |  
-| dddd | The full name of the day of the week. | 2015-02-21T13:45:30Z -> Monday (en-US)<br/>2015-02-21T13:45:30Z -> понедельник (ru-RU) | 
-| M | The month, from 1 through 12. | 2015-02-21T13:45:30Z -> 2 | 
-| MM | The month, from 01 through 12. | 2015-02-21T13:45:30Z -> 02 | 
-| MMM | The abbreviated name of the month. | 2015-02-21T13:45:30Z -> Feb (en-US)<br/>2015-02-21T13:45:30Z -> фев (ru-RU) | 
-| MMMM | The full name of the month. | 2015-02-21T13:45:30Z -> February (en-US)<br/>2015-02-21T13:45:30Z -> февраль (ru-RU) | 
-| yy | The year, from 00 to 99. | 1987-02-21T13:45:30Z -> 87<br/>2015-02-21T13:45:30Z -> 15<br/>2000-02-21T13:45:30Z -> 00 | 
-| yyyy | The year as a four-digit number. | 1987-02-21T13:45:30Z -> 1987<br/>2015-02-21T13:45:30Z -> 2015<br/>2000-02-21T13:45:30Z -> 2000 | 
-| K | Time zone information. | 2015-02-21T13:45:30Z -> Z<br/>2015-02-21T13:45:30-07:00 -> -07:00 | 
+| ss | The second, from 00 through 59. | 2015-02-01T03:05:09Z -> 09<br/>2015-02-21T13:45:30Z -> 30 |
+| m | The minute, from 0 through 59. | 2015-02-01T03:05:30Z -> 5<br/>2015-02-21T13:45:30Z -> 45 |
+| mm | The minute, from 00 through 59. | 2015-02-01T03:05:30Z -> 05<br/>2015-02-21T13:45:30Z -> 45 |
+| HH | The hour, using a 24-hour clock from 00 to 23. | 2015-02-01T03:45:30Z -> 03<br/>2015-02-21T13:45:30Z -> 13 |
+| d | The day of the month, from 1 through 31. | 2015-02-01T13:45:30Z -> 1<br/>2015-02-21T13:45:30Z -> 21 |
+| dd | The day of the month, from 01 through 31. | 2015-02-01T13:45:30Z -> 01<br/>2015-02-21T13:45:30Z -> 21 |
+| ddd | The abbreviated name of the day of the week. | 2015-02-21T13:45:30Z -> Mon (en-US)<br/>2015-02-21T13:45:30Z -> пн (ru-RU) |
+| dddd | The full name of the day of the week. | 2015-02-21T13:45:30Z -> Monday (en-US)<br/>2015-02-21T13:45:30Z -> понедельник (ru-RU) |
+| M | The month, from 1 through 12. | 2015-02-21T13:45:30Z -> 2 |
+| MM | The month, from 01 through 12. | 2015-02-21T13:45:30Z -> 02 |
+| MMM | The abbreviated name of the month. | 2015-02-21T13:45:30Z -> Feb (en-US)<br/>2015-02-21T13:45:30Z -> фев (ru-RU) |
+| MMMM | The full name of the month. | 2015-02-21T13:45:30Z -> February (en-US)<br/>2015-02-21T13:45:30Z -> февраль (ru-RU) |
+| yy | The year, from 00 to 99. | 1987-02-21T13:45:30Z -> 87<br/>2015-02-21T13:45:30Z -> 15<br/>2000-02-21T13:45:30Z -> 00 |
+| yyyy | The year as a four-digit number. | 1987-02-21T13:45:30Z -> 1987<br/>2015-02-21T13:45:30Z -> 2015<br/>2000-02-21T13:45:30Z -> 2000 |
+| K | Time zone information. | 2015-02-21T13:45:30Z -> Z<br/>2015-02-21T13:45:30-07:00 -> -07:00 |
     
