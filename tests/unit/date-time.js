@@ -364,10 +364,28 @@ describe('DateTime', function() {
             expect(new DateTime(date).format('yyyy-M-dd')).toEqual('2015-2-07');
         });
 
-        it('supports hours, minutes, seconds and milliseconds formats', function() {
+        it('supports millisecond formats', function() {
             var date = new Date(2015, 1, 7, 12, 0, 42);
-            date.setMilliseconds(500);
-            expect(new DateTime(date).format('HH:mm:ss.fff')).toEqual('12:00:42.500');
+            date.setMilliseconds(2);
+            expect(new DateTime(date).format('fff')).toEqual('002');
+        });
+
+        it('supports second formats', function() {
+            var date = new Date(2015, 1, 7, 12, 2, 2);
+            expect(new DateTime(date).format('s')).toEqual('2');
+            expect(new DateTime(date).format('ss')).toEqual('02');
+        });
+
+        it('supports minute formats', function() {
+            var date = new Date(2015, 1, 7, 12, 2, 42);
+            expect(new DateTime(date).format('m')).toEqual('2');
+            expect(new DateTime(date).format('mm')).toEqual('02');
+        });
+
+        it('supports hour formats', function() {
+            var date = new Date(2015, 1, 7, 02, 0, 42);
+            expect(new DateTime(date).format('H')).toEqual('2');
+            expect(new DateTime(date).format('HH')).toEqual('02');
         });
 
         it('supports time zone format', function() {

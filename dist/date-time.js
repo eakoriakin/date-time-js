@@ -359,9 +359,9 @@
             // Possible formats of date parts (day, month, year).
             datePartFormats = {
                 f: ['fff'],
-                s: ['ss'],
-                m: ['mm'],
-                H: ['HH'],
+                s: ['s', 'ss'],
+                m: ['m', 'mm'],
+                H: ['H', 'HH'],
                 d: ['d', 'dd', 'ddd', 'dddd'],
                 M: ['M', 'MM', 'MMM', 'MMMM'],
                 y: ['yy', 'yyyy'],
@@ -454,18 +454,36 @@
                         break;
                     }
                 case datePartFormats.H[0]:
+                    // H
+                    {
+                        datePart = hours;
+                        break;
+                    }
+                case datePartFormats.H[1]:
                     // HH
                     {
                         datePart = formatNumber(hours, 2);
                         break;
                     }
                 case datePartFormats.m[0]:
+                    // m
+                    {
+                        datePart = minutes;
+                        break;
+                    }
+                case datePartFormats.m[1]:
                     // mm
                     {
                         datePart = formatNumber(minutes, 2);
                         break;
                     }
                 case datePartFormats.s[0]:
+                    // s
+                    {
+                        datePart = seconds;
+                        break;
+                    }
+                case datePartFormats.s[1]:
                     // ss
                     {
                         datePart = formatNumber(seconds, 2);
