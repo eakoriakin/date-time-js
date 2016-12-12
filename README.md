@@ -146,7 +146,7 @@ Supports cultures: en-GB, en-US, ru-RU, uk-UA.
 | yyyy | The year as a four-digit number. | 1987-02-21T13:45:30Z -> 1987<br/>2015-02-21T13:45:30Z -> 2015<br/>2000-02-21T13:45:30Z -> 2000 |
 | K | Time zone information. | 2015-02-21T13:45:30Z -> Z<br/>2015-02-21T13:45:30-07:00 -> -07:00 |
 
-**Miscellaneous**
+### Miscellaneous
     
     new DateTime()                                    // Today
     DateTime.createEmpty().isEmpty()                  // true
