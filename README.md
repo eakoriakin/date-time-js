@@ -70,26 +70,44 @@ Supports cultures: en-GB, en-US, ru-RU, uk-UA.
     new DateTime('2015-02-21T10:45:30Z').subtract(2, 'day')             // '2015-02-19T10:45:30Z'
     new DateTime('2015-02-21T10:45:30Z').subtract(1, 'month')           // '2015-01-21T10:45:30Z'
     new DateTime('2015-02-21T10:45:30Z').subtract(2, 'year')            // '2013-02-21T10:45:30Z'
+    
+**Start of time**
+
+    new DateTime('2015-02-21T10:45:35.500Z').startOf('second')          // '2015-02-21T10:45:35.000Z'
+    new DateTime('2015-02-21T10:45:35.500Z').startOf('minute')          // '2015-02-21T10:45:00.000Z'
+    new DateTime('2015-02-21T10:45:35.500Z').startOf('hour')            // '2015-02-21T10:00:00.000Z'
+    new DateTime('2015-02-21T10:45:35.500Z').startOf('day')             // '2015-02-21T00:00:00.000Z'
+    new DateTime('2015-02-21T10:45:35.500Z').startOf('month')           // '2015-02-01T00:00:00.000Z'
+    new DateTime('2015-02-21T10:45:35.500Z').startOf('year')            // '2015-01-01T00:00:00.000Z'
+
+**End of time**
+
+    new DateTime('2015-01-01T00:00:00.000Z').endOf('second')            // '2015-01-01T00:00:00.999Z'
+    new DateTime('2015-01-01T00:00:00.000Z').endOf('minute')            // '2015-01-01T00:00:59.999Z'
+    new DateTime('2015-01-01T00:00:00.000Z').endOf('hour')              // '2015-01-01T00:59:59.999Z'
+    new DateTime('2015-01-01T00:00:00.000Z').endOf('day')               // '2015-01-01T23:59:59.999Z'
+    new DateTime('2015-01-01T00:00:00.000Z').endOf('month')             // '2015-01-31T23:59:59.999Z'
+    new DateTime('2015-01-01T00:00:00.000Z').endOf('year')              // '2015-12-31T23:59:59.999Z'
 
 **Getting**
     
-    new DateTime('2015-02-21T10:45:30.500Z').millisecond()              // 500
-    new DateTime('2015-02-21T10:45:30Z').second()                       // 30
-    new DateTime('2015-02-21T10:45:00Z').minute()                       // 45
-    new DateTime('2015-02-21T10:45:00Z').hour()                         // 10
-    new DateTime('2015-02-21T10:45:00Z').date()                         // 21
-    new DateTime('2015-02-21T10:45:00Z').month()                        // 1
-    new DateTime('2015-02-21T10:45:00Z').year()                         // 2015
+    new DateTime('2015-02-21T10:45:30.500Z').millisecond()               // 500
+    new DateTime('2015-02-21T10:45:30Z').second()                        // 30
+    new DateTime('2015-02-21T10:45:00Z').minute()                        // 45
+    new DateTime('2015-02-21T10:45:00Z').hour()                          // 10
+    new DateTime('2015-02-21T10:45:00Z').date()                          // 21
+    new DateTime('2015-02-21T10:45:00Z').month()                         // 1
+    new DateTime('2015-02-21T10:45:00Z').year()                          // 2015
 
 **Setting**
 
-    new DateTime('2015-02-21T10:45:30.000Z').millisecond(10)            // '2015-02-21T10:45:30.010Z'
-    new DateTime('2015-02-21T10:45:30Z').second(10)                     // '2015-02-21T10:45:10Z'
-    new DateTime('2015-02-21T10:45:30Z').minute(10)                     // '2015-02-21T10:10:30Z'
-    new DateTime('2015-02-21T10:45:30Z').hour(20)                       // '2015-02-21T20:45:30Z'
-    new DateTime('2015-02-21T10:45:30Z').date(25)                       // '2015-02-25T10:45:30Z'
-    new DateTime('2015-02-21T10:45:30Z').month(3)                       // '2015-04-21T10:45:30Z'
-    new DateTime('2015-02-21T10:45:30Z').year(2010)                     // '2010-02-21T10:45:30Z'
+    new DateTime('2015-02-21T10:45:30.000Z').millisecond(10)             // '2015-02-21T10:45:30.010Z'
+    new DateTime('2015-02-21T10:45:30Z').second(10)                      // '2015-02-21T10:45:10Z'
+    new DateTime('2015-02-21T10:45:30Z').minute(10)                      // '2015-02-21T10:10:30Z'
+    new DateTime('2015-02-21T10:45:30Z').hour(20)                        // '2015-02-21T20:45:30Z'
+    new DateTime('2015-02-21T10:45:30Z').date(25)                        // '2015-02-25T10:45:30Z'
+    new DateTime('2015-02-21T10:45:30Z').month(3)                        // '2015-04-21T10:45:30Z'
+    new DateTime('2015-02-21T10:45:30Z').year(2010)                      // '2010-02-21T10:45:30Z'
 
 ### Comparison
 
