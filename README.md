@@ -145,4 +145,22 @@ Supports cultures: en-GB, en-US, ru-RU, uk-UA.
 | yy | The year, from 00 to 99. | 1987-02-21T13:45:30Z -> 87<br/>2015-02-21T13:45:30Z -> 15<br/>2000-02-21T13:45:30Z -> 00 |
 | yyyy | The year as a four-digit number. | 1987-02-21T13:45:30Z -> 1987<br/>2015-02-21T13:45:30Z -> 2015<br/>2000-02-21T13:45:30Z -> 2000 |
 | K | Time zone information. | 2015-02-21T13:45:30Z -> Z<br/>2015-02-21T13:45:30-07:00 -> -07:00 |
+
+**Miscellaneous**
     
+    new DateTime()                                    // Today
+    DateTime.createEmpty().isEmpty()                  // true
+
+    new DateTime('2016-09-26T00:00:00Z').isUtc()      // true
+    new DateTime('2016-09-26T00:00:00+01:00').isUtc() // false
+    new DateTime('2015-02-21T20:45:00+04:00').toUtc() // '2015-02-21T16:45:00Z'
+    
+    DateTime.parseTimeZone('Z')                       // 0
+    DateTime.parseTimeZone('01:00')                   // 60
+    DateTime.parseTimeZone('-01:00')                  // -60
+    
+    DateTime.isDateTime(null)                         // false
+    DateTime.isDateTime(new DateTime())               // true
+    
+    DateTime.isDate(new Date())                       // true
+    DateTime.isDate('2015-02-21')                     // false
