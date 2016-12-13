@@ -137,6 +137,11 @@ Supports cultures: en-GB, en-US, ru-RU, uk-UA.
     new DateTime('2015-02-21T10:45:00-03:00').offset()                   // -180
     new DateTime('2015-02-21T10:45:30Z').offset(-180)                    // '2015-02-21T10:45:00-03:00'  
 
+**Copying**
+    
+    var date = new DateTime('2015-02-21T10:45:00Z');
+    var dateCopy = date.copy();
+    
 ### Comparison
 
     new DateTime('2016-09-26T00:00:00Z').difference('2016-09-26T00:00:01Z')                        // -1000
@@ -146,11 +151,6 @@ Supports cultures: en-GB, en-US, ru-RU, uk-UA.
     new DateTime('2016-09-26T00:00:00Z').isGreater('2016-09-26T00:00:00Z')                         // false
     new DateTime('2016-09-26T00:00:00Z').isGreaterOrEqual('2016-09-26T00:00:00Z')                  // true
     new DateTime('2016-08-15T00:00:00Z').isBetween('2016-08-01T00:00:00Z', '2016-09-01T00:00:00Z') // true
-
-### Copying
-    
-    var date = new DateTime('2015-02-21T10:45:00Z');
-    var dateCopy = date.copy();
 
 ### Formatting
 
