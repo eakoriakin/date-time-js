@@ -819,4 +819,18 @@ describe('DateTime', function() {
             expect(new DateTime('2015-01-01T00:00:00.000Z').endOf('year').format('yyyy-MM-ddTHH:mm:ss.fffK')).toEqual('2015-12-31T23:59:59.999Z');
         });
     });
+
+    describe('offset method', function() {
+        it('returns offset', function() {
+            expect(new DateTime('2015-02-21T10:45:00Z').offset()).toEqual(0);
+            expect(new DateTime('2015-02-21T10:45:00+02:00').offset()).toEqual(120);
+            expect(new DateTime('2015-02-21T10:45:00-03:00').offset()).toEqual(-180);
+        });
+
+        it('sets offset', function() {
+            var date = new DateTime('2015-02-21T10:45:30Z');
+            date.offset(-180);
+            expect(date.offset()).toEqual(-180);
+        });
+    });
 });

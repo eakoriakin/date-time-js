@@ -1,7 +1,7 @@
 {
-    "version": "0.0.4",
+    "version": "0.0.5",
     "name": "date-time-js",
-    "description": "Parses, formats and manipulates dates in various cultures.",
+    "description": "A lightweight JavaScript library which parses, formats and manipulates dates in various cultures.",
     "author": {
         "name": "Evgenii Koriakin",
         "url": "https://github.com/eakoriakin"
@@ -29,8 +29,10 @@
         "time",
         "date and time",
         "parse",
+        "parse date",
         "format",
         "manipulate",
-        "culture"
+        "culture",
+        "locale"
     ]
 }
