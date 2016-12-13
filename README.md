@@ -7,6 +7,10 @@
 [![NPM Version][npm-image]][npm-url]
 [![NPM Downloads][downloads-image]][npm-url]
 
+## Overview
+
+A lightweight JavaScript library which parses, formats and manipulates dates in various cultures.
+
 ## Download
 Download it using npm:
 
@@ -31,23 +35,41 @@ Download it using npm:
 
 Supports cultures: en-GB, en-US, ru-RU, uk-UA.
 
-    new DateTime('7')                 // '2015-02-07T00:00:00Z' (Current year is 2015 and month is February)
-    new DateTime('1/7')               // '2015-07-01T00:00:00Z' (Current year is 2015)
-    new DateTime('1/7/87')            // '1987-07-01T00:00:00Z'
-    new DateTime('1/7/1987')          // '1987-07-01T00:00:00Z'
+    new DateTime('7')                    // '2015-02-07T00:00:00Z' (Current year is 2015 and month is February)
+    new DateTime('1/7')                  // '2015-07-01T00:00:00Z' (Current year is 2015)
+    new DateTime('1/7/87')               // '1987-07-01T00:00:00Z'
+    new DateTime('010787')               // '1987-07-01T00:00:00Z'
+    new DateTime('1/7/15')               // '2015-07-01T00:00:00Z'
+    new DateTime('1/7/1987')             // '1987-07-01T00:00:00Z'
+    new DateTime('1.7.1987')             // '1987-07-01T00:00:00Z'
+    new DateTime('1-7-1987')             // '1987-07-01T00:00:00Z'
+    new DateTime('1 7 1987')             // '1987-07-01T00:00:00Z'
+    new DateTime('01071987')             // '1987-07-01T00:00:00Z'
     
-    new DateTime('2015/1/7', 'en-GB') // '2015-07-01T00:00:00Z'
-    new DateTime('2015/1/7', 'en-US') // '2015-01-07T00:00:00Z'
+    new DateTime('2015/1/7', 'en-GB')    // '2015-07-01T00:00:00Z'
+    new DateTime('2015/1/7', 'en-US')    // '2015-01-07T00:00:00Z'
     
-    new DateTime('21 Feb 15')         // '2015-02-21T00:00:00Z'
-    new DateTime('21 Фев 15')         // '2015-02-21T00:00:00Z'
-    new DateTime('21 Лют 15')         // '2015-02-21T00:00:00Z'
+    new DateTime('21 Feb 15')            // '2015-02-21T00:00:00Z'
+    new DateTime('21 February 15')       // '2015-02-21T00:00:00Z'
+    new DateTime('21 February 2015')     // '2015-02-21T00:00:00Z'
+    new DateTime('2015 February 21')     // '2015-02-21T00:00:00Z'
     
-    new DateTime('21 February 15')    // '2015-02-21T00:00:00Z'
-    new DateTime('21 Февраль 15')     // '2015-02-21T00:00:00Z'
-    new DateTime('21 Лютий 15')       // '2015-02-21T00:00:00Z'
+    new DateTime('21 фев 15')            // '2015-02-21T00:00:00Z'
+    new DateTime('21 фев 2015')          // '2015-02-21T00:00:00Z'
+    new DateTime('21 февраль 15')        // '2015-02-21T00:00:00Z'
+    new DateTime('21 февраля 15')        // '2015-02-21T00:00:00Z'
+    new DateTime('21 февраль 2015')      // '2015-02-21T00:00:00Z'
+    new DateTime('2015 февраль 21')      // '2015-02-21T00:00:00Z'
     
-    new DateTime('Feb 21, 15')        // '2015-02-21T00:00:00Z'
+    new DateTime('21 лют 15')            // '2015-02-21T00:00:00Z'
+    new DateTime('21 лютий 15')          // '2015-02-21T00:00:00Z'
+    
+    new DateTime('Feb 21, 15')           // '2015-02-21T00:00:00Z'
+    new DateTime('Feb21,15')             // '2015-02-21T00:00:00Z'
+    new DateTime('Feb 21, 2015')         // '2015-02-21T00:00:00Z'
+    new DateTime('Feb21,2015')           // '2015-02-21T00:00:00Z'
+    
+    new DateTime('1987-07-01T00:00:00Z') // '1987-07-01T00:00:00Z'
 
 ### Manipulation
 
@@ -70,26 +92,50 @@ Supports cultures: en-GB, en-US, ru-RU, uk-UA.
     new DateTime('2015-02-21T10:45:30Z').subtract(2, 'day')             // '2015-02-19T10:45:30Z'
     new DateTime('2015-02-21T10:45:30Z').subtract(1, 'month')           // '2015-01-21T10:45:30Z'
     new DateTime('2015-02-21T10:45:30Z').subtract(2, 'year')            // '2013-02-21T10:45:30Z'
-
-**Getting**
     
-    new DateTime('2015-02-21T10:45:30.500Z').millisecond()              // 500
-    new DateTime('2015-02-21T10:45:30Z').second()                       // 30
-    new DateTime('2015-02-21T10:45:00Z').minute()                       // 45
-    new DateTime('2015-02-21T10:45:00Z').hour()                         // 10
-    new DateTime('2015-02-21T10:45:00Z').date()                         // 21
-    new DateTime('2015-02-21T10:45:00Z').month()                        // 1
-    new DateTime('2015-02-21T10:45:00Z').year()                         // 2015
+**Start of time**
 
-**Setting**
+    new DateTime('2015-02-21T10:45:35.500Z').startOf('second')          // '2015-02-21T10:45:35.000Z'
+    new DateTime('2015-02-21T10:45:35.500Z').startOf('minute')          // '2015-02-21T10:45:00.000Z'
+    new DateTime('2015-02-21T10:45:35.500Z').startOf('hour')            // '2015-02-21T10:00:00.000Z'
+    new DateTime('2015-02-21T10:45:35.500Z').startOf('day')             // '2015-02-21T00:00:00.000Z'
+    new DateTime('2015-02-21T10:45:35.500Z').startOf('month')           // '2015-02-01T00:00:00.000Z'
+    new DateTime('2015-02-21T10:45:35.500Z').startOf('year')            // '2015-01-01T00:00:00.000Z'
 
-    new DateTime('2015-02-21T10:45:30.000Z').millisecond(10)            // '2015-02-21T10:45:30.010Z'
-    new DateTime('2015-02-21T10:45:30Z').second(10)                     // '2015-02-21T10:45:10Z'
-    new DateTime('2015-02-21T10:45:30Z').minute(10)                     // '2015-02-21T10:10:30Z'
-    new DateTime('2015-02-21T10:45:30Z').hour(20)                       // '2015-02-21T20:45:30Z'
-    new DateTime('2015-02-21T10:45:30Z').date(25)                       // '2015-02-25T10:45:30Z'
-    new DateTime('2015-02-21T10:45:30Z').month(3)                       // '2015-04-21T10:45:30Z'
-    new DateTime('2015-02-21T10:45:30Z').year(2010)                     // '2010-02-21T10:45:30Z'
+**End of time**
+
+    new DateTime('2015-01-01T00:00:00.000Z').endOf('second')            // '2015-01-01T00:00:00.999Z'
+    new DateTime('2015-01-01T00:00:00.000Z').endOf('minute')            // '2015-01-01T00:00:59.999Z'
+    new DateTime('2015-01-01T00:00:00.000Z').endOf('hour')              // '2015-01-01T00:59:59.999Z'
+    new DateTime('2015-01-01T00:00:00.000Z').endOf('day')               // '2015-01-01T23:59:59.999Z'
+    new DateTime('2015-01-01T00:00:00.000Z').endOf('month')             // '2015-01-31T23:59:59.999Z'
+    new DateTime('2015-01-01T00:00:00.000Z').endOf('year')              // '2015-12-31T23:59:59.999Z'
+
+**Getting and setting**
+    
+    new DateTime('2015-02-21T10:45:30.500Z').millisecond()               // 500
+    new DateTime('2015-02-21T10:45:30.000Z').millisecond(10)             // '2015-02-21T10:45:30.010Z'
+    
+    new DateTime('2015-02-21T10:45:30Z').second()                        // 30
+    new DateTime('2015-02-21T10:45:30Z').second(10)                      // '2015-02-21T10:45:10Z'
+    
+    new DateTime('2015-02-21T10:45:00Z').minute()                        // 45
+    new DateTime('2015-02-21T10:45:30Z').minute(10)                      // '2015-02-21T10:10:30Z'
+    
+    new DateTime('2015-02-21T10:45:00Z').hour()                          // 10
+    new DateTime('2015-02-21T10:45:30Z').hour(20)                        // '2015-02-21T20:45:30Z'
+    
+    new DateTime('2015-02-21T10:45:00Z').date()                          // 21
+    new DateTime('2015-02-21T10:45:30Z').date(25)                        // '2015-02-25T10:45:30Z'
+    
+    new DateTime('2015-02-21T10:45:00Z').month()                         // 1
+    new DateTime('2015-02-21T10:45:30Z').month(3)                        // '2015-04-21T10:45:30Z'
+    
+    new DateTime('2015-02-21T10:45:00Z').year()                          // 2015
+    new DateTime('2015-02-21T10:45:30Z').year(2010)                      // '2010-02-21T10:45:30Z'
+    
+    new DateTime('2015-02-21T10:45:00-03:00').offset()                   // -180
+    new DateTime('2015-02-21T10:45:30Z').offset(-180)                    // '2015-02-21T10:45:00-03:00'  
 
 ### Comparison
 
@@ -127,4 +173,22 @@ Supports cultures: en-GB, en-US, ru-RU, uk-UA.
 | yy | The year, from 00 to 99. | 1987-02-21T13:45:30Z -> 87<br/>2015-02-21T13:45:30Z -> 15<br/>2000-02-21T13:45:30Z -> 00 |
 | yyyy | The year as a four-digit number. | 1987-02-21T13:45:30Z -> 1987<br/>2015-02-21T13:45:30Z -> 2015<br/>2000-02-21T13:45:30Z -> 2000 |
 | K | Time zone information. | 2015-02-21T13:45:30Z -> Z<br/>2015-02-21T13:45:30-07:00 -> -07:00 |
+
+### Miscellaneous
     
+    new DateTime()                                    // Today
+    DateTime.createEmpty().isEmpty()                  // true
+
+    new DateTime('2016-09-26T00:00:00Z').isUtc()      // true
+    new DateTime('2016-09-26T00:00:00+01:00').isUtc() // false
+    new DateTime('2015-02-21T20:45:00+04:00').toUtc() // '2015-02-21T16:45:00Z'
+    
+    DateTime.parseTimeZone('Z')                       // 0
+    DateTime.parseTimeZone('01:00')                   // 60
+    DateTime.parseTimeZone('-01:00')                  // -60
+    
+    DateTime.isDateTime(null)                         // false
+    DateTime.isDateTime(new DateTime())               // true
+    
+    DateTime.isDate(new Date())                       // true
+    DateTime.isDate('2015-02-21')                     // false
