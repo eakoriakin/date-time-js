@@ -147,6 +147,11 @@ Supports cultures: en-GB, en-US, ru-RU, uk-UA.
     new DateTime('2016-09-26T00:00:00Z').isGreaterOrEqual('2016-09-26T00:00:00Z')                  // true
     new DateTime('2016-08-15T00:00:00Z').isBetween('2016-08-01T00:00:00Z', '2016-09-01T00:00:00Z') // true
 
+### Copying
+    
+    var date = new DateTime('2015-02-21T10:45:00Z');
+    var dateCopy = date.copy();
+
 ### Formatting
 
     new DateTime('1/7/1987').format()            // '1987-07-01T00:00:00Z'
