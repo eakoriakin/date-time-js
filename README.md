@@ -7,6 +7,10 @@
 [![NPM Version][npm-image]][npm-url]
 [![NPM Downloads][downloads-image]][npm-url]
 
+## Overview
+
+A lightweight JavaScript library which parses, formats and manipulates dates in various cultures.
+
 ## Download
 Download it using npm:
 
