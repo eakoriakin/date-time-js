@@ -137,6 +137,11 @@ Supports cultures: en-GB, en-US, ru-RU, uk-UA.
     new DateTime('2015-02-21T10:45:00-03:00').offset()                   // -180
     new DateTime('2015-02-21T10:45:30Z').offset(-180)                    // '2015-02-21T10:45:00-03:00'  
 
+**Copying**
+    
+    var date = new DateTime('2015-02-21T10:45:00Z');
+    var dateCopy = date.copy();
+    
 ### Comparison
 
     new DateTime('2016-09-26T00:00:00Z').difference('2016-09-26T00:00:01Z')                        // -1000
@@ -184,8 +189,12 @@ Supports cultures: en-GB, en-US, ru-RU, uk-UA.
     new DateTime('2015-02-21T20:45:00+04:00').toUtc() // '2015-02-21T16:45:00Z'
     
     DateTime.parseTimeZone('Z')                       // 0
-    DateTime.parseTimeZone('01:00')                   // 60
+    DateTime.parseTimeZone('+01:00')                  // 60
     DateTime.parseTimeZone('-01:00')                  // -60
+    
+    DateTime.formatTimeZone(0)                        // 'Z'
+    DateTime.formatTimeZone(60)                       // '+01:00'
+    DateTime.formatTimeZone(-60)                      // '-01:00'
     
     DateTime.isDateTime(null)                         // false
     DateTime.isDateTime(new DateTime())               // true
