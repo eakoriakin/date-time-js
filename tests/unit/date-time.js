@@ -502,25 +502,25 @@ describe('DateTime', function() {
         });
     });
 
-    describe('offsetToTimeZone method', function() {
+    describe('formatTimeZone method', function() {
         it('parses time zone', function() {
-            expect(DateTime.offsetToTimeZone()).toEqual(null);
-            expect(DateTime.offsetToTimeZone('')).toEqual(null);
-            expect(DateTime.offsetToTimeZone(false)).toEqual(null);
+            expect(DateTime.formatTimeZone()).toEqual(null);
+            expect(DateTime.formatTimeZone('')).toEqual(null);
+            expect(DateTime.formatTimeZone(false)).toEqual(null);
 
-            expect(DateTime.offsetToTimeZone(0)).toEqual('Z');
-            expect(DateTime.offsetToTimeZone(60)).toEqual('+01:00');
-            expect(DateTime.offsetToTimeZone(-60)).toEqual('-01:00');
-            expect(DateTime.offsetToTimeZone(90)).toEqual('+01:30');
-            expect(DateTime.offsetToTimeZone(-90)).toEqual('-01:30');
+            expect(DateTime.formatTimeZone(0)).toEqual('Z');
+            expect(DateTime.formatTimeZone(60)).toEqual('+01:00');
+            expect(DateTime.formatTimeZone(-60)).toEqual('-01:00');
+            expect(DateTime.formatTimeZone(90)).toEqual('+01:30');
+            expect(DateTime.formatTimeZone(-90)).toEqual('-01:30');
 
             // Minimun time zone is -12:00.
-            expect(DateTime.offsetToTimeZone(-720)).toEqual('-12:00');
-            expect(DateTime.offsetToTimeZone(-721)).toEqual(null);
+            expect(DateTime.formatTimeZone(-720)).toEqual('-12:00');
+            expect(DateTime.formatTimeZone(-721)).toEqual(null);
 
             // Maximum time zone is 14:00.
-            expect(DateTime.offsetToTimeZone(840)).toEqual('+14:00');
-            expect(DateTime.offsetToTimeZone(841)).toEqual(null);
+            expect(DateTime.formatTimeZone(840)).toEqual('+14:00');
+            expect(DateTime.formatTimeZone(841)).toEqual(null);
         });
     });
 

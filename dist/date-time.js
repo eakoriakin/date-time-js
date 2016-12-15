@@ -285,7 +285,7 @@
         return offset >= -720 && offset <= 840;
     };
 
-    var offsetToTimeZone = function(offset) {
+    var formatTimeZone = function(offset) {
         if (offset === 0) {
             return 'Z';
         }
@@ -354,7 +354,7 @@
         format = format || 'yyyy-MM-ddTHH:mm:ssK';
 
         var languageIndex = 2,
-            timeZone = offsetToTimeZone(offset),
+            timeZone = formatTimeZone(offset),
             _date = isDateTime(date) ? date.toDate() : date,
             // Possible formats of date parts (day, month, year).
             datePartFormats = {
@@ -908,7 +908,7 @@
 
     DateTime.parse = parse;
     DateTime.parseTimeZone = parseTimeZone;
-    DateTime.offsetToTimeZone = offsetToTimeZone;
+    DateTime.formatTimeZone = formatTimeZone;
     DateTime.isDate = isDate;
     DateTime.isDateTime = isDateTime;
     window.DateTime = DateTime;
