@@ -731,6 +731,9 @@ describe('DateTime', function() {
             var date = new DateTime('2015-02-21T10:45:30Z');
             date.hour(20);
             expect(date.hour()).toEqual(20);
+
+            date.hour(30);
+            expect(date.format()).toEqual('2015-02-22T06:45:30Z');
         });
     });
 
