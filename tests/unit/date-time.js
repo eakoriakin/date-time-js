@@ -764,6 +764,11 @@ describe('DateTime', function() {
             var date = new DateTime('2015-02-21T10:45:30Z');
             date.month(3);
             expect(date.month()).toEqual(3);
+            expect(date.format()).toEqual('2015-04-21T10:45:30Z');
+
+            date.month(15);
+            expect(date.month()).toEqual(3);
+            expect(date.format()).toEqual('2016-04-21T10:45:30Z');
         });
     });
 
