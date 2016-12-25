@@ -839,6 +839,7 @@ describe('DateTime', function() {
             var date = new DateTime('2015-02-21T10:45:30Z');
             date.offset(-180);
             expect(date.offset()).toEqual(-180);
+            expect(date.format()).toEqual('2015-02-21T10:45:30-03:00');
         });
     });
 });
