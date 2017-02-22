@@ -215,7 +215,7 @@ Supports cultures: en-GB, en-US, ru-RU, uk-UA.
 
 1. Install dependencies.  
 `npm install`
-2. Run the project.
+2. Run the project.  
 `gulp`
 
 ## Testing
