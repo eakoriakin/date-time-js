@@ -29,8 +29,8 @@ For JavaScript projects:
 
 Supports cultures: en-GB, en-US, ru-RU, uk-UA.
 
-    new DateTime('7')                    // '2015-02-07T00:00:00Z' (Current year is 2015 and month is February)
-    new DateTime('1/7')                  // '2015-07-01T00:00:00Z' (Current year is 2015)
+    new DateTime('7')                    // '2015-02-07T00:00:00Z' (Takes a current year and month)
+    new DateTime('1/7')                  // '2015-07-01T00:00:00Z' (Takes a current year)
     new DateTime('1/7/87')               // '1987-07-01T00:00:00Z'
     new DateTime('010787')               // '1987-07-01T00:00:00Z'
     new DateTime('1/7/15')               // '2015-07-01T00:00:00Z'
