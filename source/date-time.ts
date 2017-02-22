@@ -553,6 +553,7 @@ export class DateTime {
         - new DateTime(year, month, date, hour)
         - new DateTime(year, month, date, hour, minute)
         - new DateTime(year, month, date, hour, minute, second)
+        - new DateTime(year, month, date, hour, minute, second, millisecond)
     */
     constructor(...parameters: any[]) {
         let date: any;
@@ -599,16 +600,20 @@ export class DateTime {
             this._date = new Date(parameters[0], parameters[1], parameters[2], 0, 0, 0);
         } else if (parameters.length === 4 && DateTime.isInteger(parameters[0]) && DateTime.isInteger(parameters[1]) && DateTime.isInteger(parameters[2]) &&
             DateTime.isInteger(parameters[3])) {
-            // Year, month and date.
+            // Year, month, date and hour.
             this._date = new Date(parameters[0], parameters[1], parameters[2], parameters[3], 0, 0);
         } else if (parameters.length === 5 && DateTime.isInteger(parameters[0]) && DateTime.isInteger(parameters[1]) && DateTime.isInteger(parameters[2]) &&
             DateTime.isInteger(parameters[3]) && DateTime.isInteger(parameters[4])) {
-            // Year, month and date.
+            // Year, month, date, hour and minute.
             this._date = new Date(parameters[0], parameters[1], parameters[2], parameters[3], parameters[4], 0);
         } else if (parameters.length === 6 && DateTime.isInteger(parameters[0]) && DateTime.isInteger(parameters[1]) && DateTime.isInteger(parameters[2]) &&
             DateTime.isInteger(parameters[3]) && DateTime.isInteger(parameters[4]) && DateTime.isInteger(parameters[5])) {
-            // Year, month and date.
+            // Year, month, date, hour, minute and second.
             this._date = new Date(parameters[0], parameters[1], parameters[2], parameters[3], parameters[4], parameters[5]);
+        } else if (parameters.length === 7 && DateTime.isInteger(parameters[0]) && DateTime.isInteger(parameters[1]) && DateTime.isInteger(parameters[2]) &&
+            DateTime.isInteger(parameters[3]) && DateTime.isInteger(parameters[4]) && DateTime.isInteger(parameters[5]) && DateTime.isInteger(parameters[6])) {
+            // Year, month, date, hour, minute, second and millisecond.
+            this._date = new Date(parameters[0], parameters[1], parameters[2], parameters[3], parameters[4], parameters[5], parameters[6]);
         }
     }
 

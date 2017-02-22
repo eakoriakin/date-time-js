@@ -26,9 +26,6 @@ describe('DateTime', () => {
 
         it('uses date', () => {
             let date = new DateTime(1987, 6, 1, 0, 0, 0);
-            expect(date.format()).toEqual('1987-07-01T00:00:00Z');
-            expect(date.offset()).toEqual(0);
-
             date = new DateTime(date);
             expect(date.format()).toEqual('1987-07-01T00:00:00Z');
             expect(date.offset()).toEqual(0);
@@ -56,6 +53,10 @@ describe('DateTime', () => {
 
         it('uses year, month, date, hour, minute and second', () => {
             expect(new DateTime(2015, 1, 10, 15, 30, 45).format()).toEqual('2015-02-10T15:30:45Z');
+        });
+
+        it('uses year, month, date, hour, minute, second and millisecond', () => {
+            expect(new DateTime(2015, 1, 10, 15, 30, 45, 500).format('yyyy-MM-ddTHH:mm:ss.fffK')).toEqual('2015-02-10T15:30:45.500Z');
         });
     });
 
