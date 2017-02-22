@@ -17,10 +17,10 @@ Download it using npm:
 `npm install date-time-js --save`
 
 ## Getting started
-Import the library to use it:
+For TypeScript projects:  
 `import { DateTime } from 'date-time-js';`
 
-To use with JavaScript import `date-time.js` file to your main HTML file.
+For JavaScript projects:  
 `<script src="node_modules/source/date-time.js"></script>`
 
 ## Usage
