@@ -837,4 +837,21 @@ describe('DateTime', () => {
             expect(date.format()).toEqual('2015-02-21T10:45:30-03:00');
         });
     });
+
+    it('supports chaining', () => {
+        let formattedDate = new DateTime('2015-02-21T10:45:30Z')
+            .millisecond(10)
+            .second(10)
+            .minute(10)
+            .hour(20)
+            .date(25)
+            .month(3)
+            .year(2010)
+            .add(2, 'millisecond')
+            .subtract(3, 'millisecond')
+            .offset(-180)
+            .format('yyyy-MM-ddTHH:mm:ss.fffK');
+
+        expect(formattedDate).toEqual('2010-04-25T20:10:10.009-03:00');
+    });
 });
