@@ -620,6 +620,14 @@ export class DateTime {
         return this._date;
     }
 
+    /**
+     * Gets or sets the UTC offset of the date.
+     * 
+     * @param {number} [offset] A number between -720 and 840, representing the offset.
+     * @returns {any} Current DateTime instance on set, number on get.
+     * 
+     * @memberOf DateTime
+     */
     public offset(offset?: number): any {
         if (arguments.length === 0) {
             return this._offset;
