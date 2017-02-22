@@ -1,8 +1,0 @@
-{
-    "multistr": true,
-    "undef": true,
-    "globals": {
-        "console": false,
-        "window": false
-    }
-}

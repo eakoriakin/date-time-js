@@ -1,84 +1,75 @@
-var gulp = require('gulp'),
+const gulp = require('gulp'),
+    merge = require('merge2'),
     runSequence = require('run-sequence'),
     del = require('del'),
-    uglify = require('gulp-uglify'),
-    concat = require('gulp-concat'),
+    typescript = require('gulp-typescript'),
+    tsconfig = require('./tsconfig.json'),
+    sourcemaps = require('gulp-sourcemaps'),
+    tslint = require('gulp-tslint'),
     karma = require('karma'),
-    karmaConfig = __dirname + '/tests/config/karma/karma.js',
-    jshint = require('gulp-jshint');
+    karmaConfig = __dirname + '/tests/karma.config.js';
 
-var paths = {
-    dist: {
-        root: 'dist/'
-    },
-    source: {
-        js: 'source/**/*.js'
+const paths = {
+    root: '',
+    ts: ['source/*.ts', '!source/*.d.ts']
+};
+
+var build = function (complete) {
+    var tasks = ['check-ts', 'copy-ts'];
+
+    if (complete) {
+        runSequence(tasks, complete);
+    } else {
+        runSequence(tasks);
     }
 };
 
-var build = function(complete) {
-    var tasks = ['check-js', 'copy-js', 'copy-and-minify-js'];
+gulp.task('copy-ts', function () {
+    // Create TS declaration files.
+    var tsResult = gulp.src(tsconfig.files, {
+        base: './'
+    }).pipe(sourcemaps.init()).pipe(typescript(tsconfig.compilerOptions));
 
-    if (complete) {
-        runSequence('clean', tasks, complete);
-    } else {
-        runSequence('clean', tasks);
-    }
-}
+    // Create sourcemaps.
+    tsResult.js.pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest(paths.root));
 
-gulp.task('clean', function() {
-    del.sync([paths.dist.root + '/**/*', '!' + paths.dist.root]);
+    return merge([
+        tsResult.dts.pipe(gulp.dest(paths.root)),
+        tsResult.js.pipe(gulp.dest(paths.root))
+    ]);
 });
 
-gulp.task('copy-js', function() {
-    return gulp.src(paths.source.js)
-        .pipe(concat('date-time.js'))
-        .pipe(gulp.dest(paths.dist.root));
+gulp.task('check-ts', function () {
+    return gulp.src(paths.ts)
+        .pipe(tslint({
+            formatter: 'verbose'
+        }))
+        .pipe(tslint.report({
+            emitError: false
+        }));
 });
 
-gulp.task('copy-and-minify-js', function() {
-    return gulp.src(paths.source.js)
-        .pipe(uglify())
-        .pipe(concat('date-time.min.js'))
-        .pipe(gulp.dest(paths.dist.root));
-});
-
-gulp.task('check-js', function() {
-    return gulp.src(paths.source.js)
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'));
-});
-
-gulp.task('build', function() {
+gulp.task('build', function () {
     build();
 });
 
-gulp.task('start', function() {
-    build(function() {
-        gulp.watch(paths.source.js).on('change', function() {
+gulp.task('start', function () {
+    build(function () {
+        // Watch TS files.
+        gulp.watch(paths.ts).on('change', function () {
             build();
         });
     });
 });
 
-gulp.task('test', function(done) {
+gulp.task('test', function (done) {
     new karma.Server({
-            configFile: karmaConfig,
-            action: 'run'
-        }, function() {
-            done();
-        })
-        .start();
-});
-
-gulp.task('test-single', function(done) {
-    new karma.Server({
-            configFile: karmaConfig,
-            singleRun: true
-        }, function() {
-            done();
-        })
-        .start();
+        configFile: karmaConfig,
+        action: 'run'
+    }, function () {
+        done();
+    }).start();
 });
 
 gulp.task('default', ['start']);

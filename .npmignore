@@ -1,8 +1,11 @@
+coverage
 node_modules
 npm-debug.log
-source
 .gitignore
 .npmignore
+*.ts
+!*.d.ts
 gulpfile.js
+tsconfig.json
+tslint.json
 tests
-.jshintrc

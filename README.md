@@ -9,7 +9,7 @@
 
 ## Overview
 
-A lightweight JavaScript library which parses, formats and manipulates dates in various cultures.
+A lightweight TypeScript library which parses, formats and manipulates dates in various cultures.
 
 ## Download
 Download it using npm:
@@ -17,17 +17,11 @@ Download it using npm:
 `npm install date-time-js --save`
 
 ## Getting started
+Import the library to use it:
+`import { DateTime } from 'date-time-js';`
 
-`<script src="node_modules/date-time-js/dist/date-time.min.js"></script>`
-
-## Development
-
-1. `npm install`
-2. `gulp`
-
-## Testing
-
-`gulp test`
+To use with JavaScript import `date-time.js` file to your main HTML file.
+`<script src="node_modules/source/date-time.js"></script>`
 
 ## Usage
 
@@ -201,3 +195,13 @@ Supports cultures: en-GB, en-US, ru-RU, uk-UA.
     
     DateTime.isDate(new Date())                       // true
     DateTime.isDate('2015-02-21')                     // false
+
+## Development
+
+1. Install dependencies.  
+`npm install`
+2. Run the project.
+`gulp`
+
+## Testing
+`gulp test`

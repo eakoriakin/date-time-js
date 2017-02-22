@@ -1,0 +1,24 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "target": "ES5",
+        "module": "es2015",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "declaration": true,
+        "noResolve": true,
+        "noImplicitAny": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "noUnusedParameters": true,
+        "noUnusedLocals": true
+    },
+    "files": [
+        "date-time.ts",
+        "source/date-time.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
