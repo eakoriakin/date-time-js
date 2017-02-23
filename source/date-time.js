@@ -21,6 +21,7 @@ export var DateTime = (function () {
         - new DateTime(year, month, date, hour)
         - new DateTime(year, month, date, hour, minute)
         - new DateTime(year, month, date, hour, minute, second)
+        - new DateTime(year, month, date, hour, minute, second, millisecond)
     */
     function DateTime() {
         var parameters = [];
@@ -76,18 +77,23 @@ export var DateTime = (function () {
         }
         else if (parameters.length === 4 && DateTime.isInteger(parameters[0]) && DateTime.isInteger(parameters[1]) && DateTime.isInteger(parameters[2]) &&
             DateTime.isInteger(parameters[3])) {
-            // Year, month and date.
+            // Year, month, date and hour.
             this._date = new Date(parameters[0], parameters[1], parameters[2], parameters[3], 0, 0);
         }
         else if (parameters.length === 5 && DateTime.isInteger(parameters[0]) && DateTime.isInteger(parameters[1]) && DateTime.isInteger(parameters[2]) &&
             DateTime.isInteger(parameters[3]) && DateTime.isInteger(parameters[4])) {
-            // Year, month and date.
+            // Year, month, date, hour and minute.
             this._date = new Date(parameters[0], parameters[1], parameters[2], parameters[3], parameters[4], 0);
         }
         else if (parameters.length === 6 && DateTime.isInteger(parameters[0]) && DateTime.isInteger(parameters[1]) && DateTime.isInteger(parameters[2]) &&
             DateTime.isInteger(parameters[3]) && DateTime.isInteger(parameters[4]) && DateTime.isInteger(parameters[5])) {
-            // Year, month and date.
+            // Year, month, date, hour, minute and second.
             this._date = new Date(parameters[0], parameters[1], parameters[2], parameters[3], parameters[4], parameters[5]);
+        }
+        else if (parameters.length === 7 && DateTime.isInteger(parameters[0]) && DateTime.isInteger(parameters[1]) && DateTime.isInteger(parameters[2]) &&
+            DateTime.isInteger(parameters[3]) && DateTime.isInteger(parameters[4]) && DateTime.isInteger(parameters[5]) && DateTime.isInteger(parameters[6])) {
+            // Year, month, date, hour, minute, second and millisecond.
+            this._date = new Date(parameters[0], parameters[1], parameters[2], parameters[3], parameters[4], parameters[5], parameters[6]);
         }
     }
     DateTime.isInteger = function (value) {
@@ -608,14 +614,6 @@ export var DateTime = (function () {
     DateTime.prototype.subtract = function (value, unit) {
         return this.add(value * -1, unit);
     };
-    /**
-     * Gets or sets the milliseconds of the date.
-     *
-     * @param {number} [millisecond] A number between 0 and 999, representing the milliseconds. If a specified number is outside the expected range, the date information is updated accordingly. For example, if number of milliseconds is 1005, the number of seconds is incremented by 1, and 5 is used for the milliseconds.
-     * @returns {any} Current DateTime instance on set, number on get.
-     *
-     * @memberOf DateTime
-     */
     DateTime.prototype.millisecond = function (millisecond) {
         if (this.isEmpty()) {
             return 0;
@@ -628,14 +626,6 @@ export var DateTime = (function () {
             return this;
         }
     };
-    /**
-     * Gets or sets the seconds of the date.
-     *
-     * @param {number} [second] A number between 0 and 59, representing the seconds. If a specified number is outside the expected range, the date information is updated accordingly. For example, if number of seconds is 100, the number of minutes is incremented by 1, and 40 is used for the seconds.
-     * @returns {any} Current DateTime instance on set, number on get.
-     *
-     * @memberOf DateTime
-     */
     DateTime.prototype.second = function (second) {
         if (this.isEmpty()) {
             return 0;
@@ -648,14 +638,6 @@ export var DateTime = (function () {
             return this;
         }
     };
-    /**
-     * Gets or sets the minutes of the date.
-     *
-     * @param {number} [minute] A number between 0 and 59, representing the minutes. If a specified number is outside the expected range, the date information is updated accordingly. For example, if number of minutes is 100, the number of hours is incremented by 1, and 40 is used for the minutes.
-     * @returns {any} Current DateTime instance on set, number on get.
-     *
-     * @memberOf DateTime
-     */
     DateTime.prototype.minute = function (minute) {
         if (this.isEmpty()) {
             return 0;
@@ -668,14 +650,6 @@ export var DateTime = (function () {
             return this;
         }
     };
-    /**
-     * Gets or sets the hours of the date.
-     *
-     * @param {number} [hour] A number between 0 and 23, representing the hours. If a specified number is outside the expected range, the date information is updated accordingly. For example, if number of hours is 30, the day of month is incremented by 1, and 6 is used for the hours.
-     * @returns {any} Current DateTime instance on set, number on get.
-     *
-     * @memberOf DateTime
-     */
     DateTime.prototype.hour = function (hour) {
         if (this.isEmpty()) {
             return 0;
@@ -688,14 +662,6 @@ export var DateTime = (function () {
             return this;
         }
     };
-    /**
-     * Gets or sets the day of the month of the date.
-     *
-     * @param {number} [date] A number representing the day of the month. If a specified number is outside of the range of date values for the month, the date information is updated accordingly. For example, if the day of the month is 0, the date is set to the last day of the previous month.
-     * @returns {any} Current DateTime instance on set, number on get.
-     *
-     * @memberOf DateTime
-     */
     DateTime.prototype.date = function (date) {
         if (this.isEmpty()) {
             return 0;
@@ -708,14 +674,6 @@ export var DateTime = (function () {
             return this;
         }
     };
-    /**
-     * Gets or sets the month of the date.
-     *
-     * @param {number} [month] A number between 0 and 11, representing the month. 0 corresponds to January, 1 to February, and so on. If a specified number is outside the expected range, the date information is updated accordingly. For example, if the month is 15, the year is incremented by 1, and 3 is used for the month.
-     * @returns {any} Current DateTime instance on set, number on get.
-     *
-     * @memberOf DateTime
-     */
     DateTime.prototype.month = function (month) {
         if (this.isEmpty()) {
             return 0;
@@ -728,14 +686,6 @@ export var DateTime = (function () {
             return this;
         }
     };
-    /**
-     * Gets or sets the year of the date.
-     *
-     * @param {number} [year] A number representing the year.
-     * @returns {any} Current DateTime instance on set, number on get.
-     *
-     * @memberOf DateTime
-     */
     DateTime.prototype.year = function (year) {
         if (this.isEmpty()) {
             return 0;

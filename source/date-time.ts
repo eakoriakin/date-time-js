@@ -626,13 +626,22 @@ export class DateTime {
     }
 
     /**
-     * Gets or sets the UTC offset of the date.
+     * Gets the UTC offset of the date.
      * 
-     * @param {number} [offset] A number between -720 and 840, representing the offset.
-     * @returns {any} Current DateTime instance on set, number on get.
+     * @returns {number}
      * 
      * @memberOf DateTime
      */
+    public offset(): number;
+    /**
+     * Sets the UTC offset of the date.
+     * 
+     * @param {number} offset A number between -720 and 840, representing the offset.
+     * @returns {DateTime} Current DateTime instance.
+     * 
+     * @memberOf DateTime
+     */
+    public offset(offset: number): DateTime;
     public offset(offset?: number): any {
         if (arguments.length === 0) {
             return this._offset;
@@ -773,13 +782,22 @@ export class DateTime {
     }
 
     /**
-     * Gets or sets the milliseconds of the date.
+     * Gets the milliseconds of the date.
      * 
-     * @param {number} [millisecond] A number between 0 and 999, representing the milliseconds. If a specified number is outside the expected range, the date information is updated accordingly. For example, if number of milliseconds is 1005, the number of seconds is incremented by 1, and 5 is used for the milliseconds.
-     * @returns {any} Current DateTime instance on set, number on get.
+     * @returns {number}
      * 
      * @memberOf DateTime
      */
+    public millisecond(): number;
+    /**
+     * Sets the milliseconds of the date.
+     * 
+     * @param {number} millisecond A number between 0 and 999, representing the milliseconds. If a specified number is outside the expected range, the date information is updated accordingly. For example, if number of milliseconds is 1005, the number of seconds is incremented by 1, and 5 is used for the milliseconds.
+     * @returns {DateTime} Current DateTime instance.
+     * 
+     * @memberOf DateTime
+     */
+    public millisecond(millisecond: number): DateTime;
     public millisecond(millisecond?: number): any {
         if (this.isEmpty()) {
             return 0;
@@ -794,13 +812,22 @@ export class DateTime {
     }
 
     /**
-     * Gets or sets the seconds of the date.
+     * Gets the seconds of the date.
      * 
-     * @param {number} [second] A number between 0 and 59, representing the seconds. If a specified number is outside the expected range, the date information is updated accordingly. For example, if number of seconds is 100, the number of minutes is incremented by 1, and 40 is used for the seconds.
-     * @returns {any} Current DateTime instance on set, number on get.
+     * @returns {number}
      * 
      * @memberOf DateTime
      */
+    public second(): number;
+    /**
+     * Sets the seconds of the date.
+     * 
+     * @param {number} second A number between 0 and 59, representing the seconds. If a specified number is outside the expected range, the date information is updated accordingly. For example, if number of seconds is 100, the number of minutes is incremented by 1, and 40 is used for the seconds.
+     * @returns {DateTime} Current DateTime instance.
+     * 
+     * @memberOf DateTime
+     */
+    public second(second: number): DateTime;
     public second(second?: number): any {
         if (this.isEmpty()) {
             return 0;
@@ -815,13 +842,22 @@ export class DateTime {
     }
 
     /**
-     * Gets or sets the minutes of the date.
+     * Gets the minutes of the date.
      * 
-     * @param {number} [minute] A number between 0 and 59, representing the minutes. If a specified number is outside the expected range, the date information is updated accordingly. For example, if number of minutes is 100, the number of hours is incremented by 1, and 40 is used for the minutes.
-     * @returns {any} Current DateTime instance on set, number on get.
+     * @returns {number}
      * 
      * @memberOf DateTime
      */
+    public minute(): number;
+    /**
+     * Sets the minutes of the date.
+     * 
+     * @param {number} minute A number between 0 and 59, representing the minutes. If a specified number is outside the expected range, the date information is updated accordingly. For example, if number of minutes is 100, the number of hours is incremented by 1, and 40 is used for the minutes.
+     * @returns {DateTime} Current DateTime instance.
+     * 
+     * @memberOf DateTime
+     */
+    public minute(minute: number): DateTime;
     public minute(minute?: number): any {
         if (this.isEmpty()) {
             return 0;
@@ -836,13 +872,22 @@ export class DateTime {
     }
 
     /**
-     * Gets or sets the hours of the date.
+     * Gets the hours of the date.
      * 
-     * @param {number} [hour] A number between 0 and 23, representing the hours. If a specified number is outside the expected range, the date information is updated accordingly. For example, if number of hours is 30, the day of month is incremented by 1, and 6 is used for the hours.
-     * @returns {any} Current DateTime instance on set, number on get.
+     * @returns {number}
      * 
      * @memberOf DateTime
      */
+    public hour(): number;
+    /**
+     * Sets the hours of the date.
+     * 
+     * @param {number} hour A number between 0 and 23, representing the hours. If a specified number is outside the expected range, the date information is updated accordingly. For example, if number of hours is 30, the day of month is incremented by 1, and 6 is used for the hours.
+     * @returns {DateTime} Current DateTime instance.
+     * 
+     * @memberOf DateTime
+     */
+    public hour(hour: number): DateTime;
     public hour(hour?: number): any {
         if (this.isEmpty()) {
             return 0;
@@ -857,13 +902,22 @@ export class DateTime {
     }
 
     /**
-     * Gets or sets the day of the month of the date.
+     * Gets the day of the month of the date.
      * 
-     * @param {number} [date] A number representing the day of the month. If a specified number is outside of the range of date values for the month, the date information is updated accordingly. For example, if the day of the month is 0, the date is set to the last day of the previous month.
-     * @returns {any} Current DateTime instance on set, number on get.
+     * @returns {number}
      * 
      * @memberOf DateTime
      */
+    public date(): number;
+    /**
+     * Sets the day of the month of the date.
+     * 
+     * @param {number} date A number representing the day of the month. If a specified number is outside of the range of date values for the month, the date information is updated accordingly. For example, if the day of the month is 0, the date is set to the last day of the previous month.
+     * @returns {DateTime} Current DateTime instance.
+     * 
+     * @memberOf DateTime
+     */
+    public date(date: number): DateTime;
     public date(date?: number): any {
         if (this.isEmpty()) {
             return 0;
@@ -878,13 +932,22 @@ export class DateTime {
     }
 
     /**
-     * Gets or sets the month of the date.
+     * Gets the month of the date.
      * 
-     * @param {number} [month] A number between 0 and 11, representing the month. 0 corresponds to January, 1 to February, and so on. If a specified number is outside the expected range, the date information is updated accordingly. For example, if the month is 15, the year is incremented by 1, and 3 is used for the month.
-     * @returns {any} Current DateTime instance on set, number on get.
+     * @returns {number}
      * 
      * @memberOf DateTime
      */
+    public month(): number;
+    /**
+     * Sets the month of the date.
+     * 
+     * @param {number} month A number between 0 and 11, representing the month. 0 corresponds to January, 1 to February, and so on. If a specified number is outside the expected range, the date information is updated accordingly. For example, if the month is 15, the year is incremented by 1, and 3 is used for the month.
+     * @returns {DateTime} Current DateTime instance.
+     * 
+     * @memberOf DateTime
+     */
+    public month(month: number): DateTime;
     public month(month?: number): any {
         if (this.isEmpty()) {
             return 0;
@@ -899,13 +962,22 @@ export class DateTime {
     }
 
     /**
-     * Gets or sets the year of the date.
+     * Gets the year of the date.
      * 
-     * @param {number} [year] A number representing the year.
-     * @returns {any} Current DateTime instance on set, number on get.
+     * @returns {number}
      * 
      * @memberOf DateTime
      */
+    public year(): number;
+    /**
+     * Sets the year of the date.
+     * 
+     * @param {number} year A number representing the year.
+     * @returns {DateTime} Current DateTime instance.
+     * 
+     * @memberOf DateTime
+     */
+    public year(year: number): DateTime;
     public year(year?: number): any {
         if (this.isEmpty()) {
             return 0;
