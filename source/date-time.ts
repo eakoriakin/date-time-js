@@ -539,22 +539,97 @@ export class DateTime {
         return new DateTime(null);
     }
 
-    // TODO: How to deal with overloads in TypeScript?
-    /*
-        Overloads:
-        - new DateTime() +
-        - new DateTime(Date) +
-        - new DateTime(DateTime) +
-        - new DateTime(dateString) +
-        - new DateTime(dateString, culture) +
-        - new DateTime(year)
-        - new DateTime(year, month)
-        - new DateTime(year, month, date)
-        - new DateTime(year, month, date, hour)
-        - new DateTime(year, month, date, hour, minute)
-        - new DateTime(year, month, date, hour, minute, second)
-        - new DateTime(year, month, date, hour, minute, second, millisecond)
-    */
+    /**
+     * Creates an instance of DateTime.
+     * 
+     * @memberOf DateTime
+     */
+    constructor();
+    /**
+     * Creates an instance of DateTime.
+     * @param {(string | Date | DateTime)} date String value representing a date, or Date object, or DateTime object.
+     * 
+     * @memberOf DateTime
+     */
+    constructor(date: string | Date | DateTime);
+    /**
+     * Creates an instance of DateTime.
+     * @param {(string | Date | DateTime)} date String value representing a date, or Date object, or DateTime object.
+     * @param {string} culture The culture of the date. E.g. 'en-GB' or 'ru-RU'.
+     * 
+     * @memberOf DateTime
+     */
+    constructor(date: string | Date | DateTime, culture: string);
+    /**
+     * Creates an instance of DateTime.
+     * @param {number} year A number representing the year.
+     * 
+     * @memberOf DateTime
+     */
+    constructor(year: number);
+    /**
+     * Creates an instance of DateTime.
+     * @param {number} year A number representing the year.
+     * @param {number} month A number between 0 and 11, representing the month. 0 corresponds to January, 1 to February, and so on.
+     * 
+     * @memberOf DateTime
+     */
+    constructor(year: number, month: number);
+    /**
+     * Creates an instance of DateTime.
+     * @param {number} year A number representing the year.
+     * @param {number} month A number between 0 and 11, representing the month. 0 corresponds to January, 1 to February, and so on.
+     * @param {number} date A number representing the day of the month.
+     * 
+     * @memberOf DateTime
+     */
+    constructor(year: number, month: number, date: number);
+    /**
+     * Creates an instance of DateTime.
+     * @param {number} year A number representing the year.
+     * @param {number} month A number between 0 and 11, representing the month. 0 corresponds to January, 1 to February, and so on.
+     * @param {number} date A number representing the day of the month.
+     * @param {number} hour A number between 0 and 23, representing the hours.
+     * 
+     * @memberOf DateTime
+     */
+    constructor(year: number, month: number, date: number, hour: number);
+    /**
+     * Creates an instance of DateTime.
+     * @param {number} year A number representing the year.
+     * @param {number} month A number between 0 and 11, representing the month. 0 corresponds to January, 1 to February, and so on.
+     * @param {number} date A number representing the day of the month.
+     * @param {number} hour A number between 0 and 23, representing the hours.
+     * @param {number} minute A number between 0 and 59, representing the minutes.
+     * 
+     * @memberOf DateTime
+     */
+    constructor(year: number, month: number, date: number, hour: number, minute: number);
+    /**
+     * Creates an instance of DateTime.
+     * @param {number} year A number representing the year.
+     * @param {number} month A number between 0 and 11, representing the month. 0 corresponds to January, 1 to February, and so on.
+     * @param {number} date A number representing the day of the month.
+     * @param {number} hour A number between 0 and 23, representing the hours.
+     * @param {number} minute A number between 0 and 59, representing the minutes.
+     * @param {number} second A number between 0 and 59, representing the seconds.
+     * 
+     * @memberOf DateTime
+     */
+    constructor(year: number, month: number, date: number, hour: number, minute: number, second: number);
+    /**
+     * Creates an instance of DateTime.
+     * @param {number} year A number representing the year.
+     * @param {number} month A number between 0 and 11, representing the month. 0 corresponds to January, 1 to February, and so on.
+     * @param {number} date A number representing the day of the month.
+     * @param {number} hour A number between 0 and 23, representing the hours.
+     * @param {number} minute A number between 0 and 59, representing the minutes.
+     * @param {number} second A number between 0 and 59, representing the seconds.
+     * @param {number} millisecond A number between 0 and 999, representing the milliseconds.
+     * 
+     * @memberOf DateTime
+     */
+    constructor(year: number, month: number, date: number, hour: number, minute: number, second: number, millisecond: number);
     constructor(...parameters: any[]) {
         let date: any;
         this._date = null;
@@ -617,6 +692,13 @@ export class DateTime {
         }
     }
 
+    /**
+     * Copies the date.
+     * 
+     * @returns {DateTime} 
+     * 
+     * @memberOf DateTime
+     */
     public copy(): DateTime {
         return new DateTime(this);
     }
@@ -637,7 +719,7 @@ export class DateTime {
      * Sets the UTC offset of the date.
      * 
      * @param {number} offset A number between -720 and 840, representing the offset.
-     * @returns {DateTime} Current DateTime instance.
+     * @returns {DateTime} The current DateTime instance.
      * 
      * @memberOf DateTime
      */
@@ -732,6 +814,15 @@ export class DateTime {
         return DateTime.format(this._date, format, this._offset);
     }
 
+    /**
+     * Adds time to the date.
+     * 
+     * @param {number} value An amount of time.
+     * @param {string} unit A unit of time ('year', 'quarter', 'month', 'week', 'day', 'hour', 'minute', 'second', 'millisecond').
+     * @returns {DateTime} The current DateTime instance.
+     * 
+     * @memberOf DateTime
+     */
     public add(value: number, unit: string): DateTime {
         if (this.isEmpty() || !value) {
             return this;
@@ -777,6 +868,15 @@ export class DateTime {
         return this;
     }
 
+    /**
+     * Subtracts time from the date.
+     * 
+     * @param {number} value An amount of time.
+     * @param {string} unit A unit of time ('year', 'quarter', 'month', 'week', 'day', 'hour', 'minute', 'second', 'millisecond').
+     * @returns {DateTime} The current DateTime instance.
+     * 
+     * @memberOf DateTime
+     */
     public subtract(value: number, unit: string): DateTime {
         return this.add(value * -1, unit);
     }
@@ -793,7 +893,7 @@ export class DateTime {
      * Sets the milliseconds of the date.
      * 
      * @param {number} millisecond A number between 0 and 999, representing the milliseconds. If a specified number is outside the expected range, the date information is updated accordingly. For example, if number of milliseconds is 1005, the number of seconds is incremented by 1, and 5 is used for the milliseconds.
-     * @returns {DateTime} Current DateTime instance.
+     * @returns {DateTime} The current DateTime instance.
      * 
      * @memberOf DateTime
      */
@@ -823,7 +923,7 @@ export class DateTime {
      * Sets the seconds of the date.
      * 
      * @param {number} second A number between 0 and 59, representing the seconds. If a specified number is outside the expected range, the date information is updated accordingly. For example, if number of seconds is 100, the number of minutes is incremented by 1, and 40 is used for the seconds.
-     * @returns {DateTime} Current DateTime instance.
+     * @returns {DateTime} The current DateTime instance.
      * 
      * @memberOf DateTime
      */
@@ -853,7 +953,7 @@ export class DateTime {
      * Sets the minutes of the date.
      * 
      * @param {number} minute A number between 0 and 59, representing the minutes. If a specified number is outside the expected range, the date information is updated accordingly. For example, if number of minutes is 100, the number of hours is incremented by 1, and 40 is used for the minutes.
-     * @returns {DateTime} Current DateTime instance.
+     * @returns {DateTime} The current DateTime instance.
      * 
      * @memberOf DateTime
      */
@@ -883,7 +983,7 @@ export class DateTime {
      * Sets the hours of the date.
      * 
      * @param {number} hour A number between 0 and 23, representing the hours. If a specified number is outside the expected range, the date information is updated accordingly. For example, if number of hours is 30, the day of month is incremented by 1, and 6 is used for the hours.
-     * @returns {DateTime} Current DateTime instance.
+     * @returns {DateTime} The current DateTime instance.
      * 
      * @memberOf DateTime
      */
@@ -913,7 +1013,7 @@ export class DateTime {
      * Sets the day of the month of the date.
      * 
      * @param {number} date A number representing the day of the month. If a specified number is outside of the range of date values for the month, the date information is updated accordingly. For example, if the day of the month is 0, the date is set to the last day of the previous month.
-     * @returns {DateTime} Current DateTime instance.
+     * @returns {DateTime} The current DateTime instance.
      * 
      * @memberOf DateTime
      */
@@ -943,7 +1043,7 @@ export class DateTime {
      * Sets the month of the date.
      * 
      * @param {number} month A number between 0 and 11, representing the month. 0 corresponds to January, 1 to February, and so on. If a specified number is outside the expected range, the date information is updated accordingly. For example, if the month is 15, the year is incremented by 1, and 3 is used for the month.
-     * @returns {DateTime} Current DateTime instance.
+     * @returns {DateTime} The current DateTime instance.
      * 
      * @memberOf DateTime
      */
@@ -973,7 +1073,7 @@ export class DateTime {
      * Sets the year of the date.
      * 
      * @param {number} year A number representing the year.
-     * @returns {DateTime} Current DateTime instance.
+     * @returns {DateTime} The current DateTime instance.
      * 
      * @memberOf DateTime
      */

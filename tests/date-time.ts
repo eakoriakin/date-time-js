@@ -5,10 +5,9 @@ describe('DateTime', () => {
         currentYear = currentDate.getFullYear();
 
     describe('constructor', () => {
-        it('creates empty instance if passed date is incorrect', () => {
+        it('creates empty instance if passed date is undefined or null', () => {
             expect(new DateTime(undefined).isEmpty()).toEqual(true);
             expect(new DateTime(null).isEmpty()).toEqual(true);
-            expect(new DateTime(true).isEmpty()).toEqual(true);
         });
 
         it('uses current date if date is not passed', () => {

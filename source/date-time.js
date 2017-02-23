@@ -7,22 +7,6 @@ var DayAndMonth = (function () {
     return DayAndMonth;
 }());
 export var DateTime = (function () {
-    // TODO: How to deal with overloads in TypeScript?
-    /*
-        Overloads:
-        - new DateTime() +
-        - new DateTime(Date) +
-        - new DateTime(DateTime) +
-        - new DateTime(dateString) +
-        - new DateTime(dateString, culture) +
-        - new DateTime(year)
-        - new DateTime(year, month)
-        - new DateTime(year, month, date)
-        - new DateTime(year, month, date, hour)
-        - new DateTime(year, month, date, hour, minute)
-        - new DateTime(year, month, date, hour, minute, second)
-        - new DateTime(year, month, date, hour, minute, second, millisecond)
-    */
     function DateTime() {
         var parameters = [];
         for (var _i = 0; _i < arguments.length; _i++) {
@@ -499,6 +483,13 @@ export var DateTime = (function () {
     DateTime.createEmpty = function () {
         return new DateTime(null);
     };
+    /**
+     * Copies the date.
+     *
+     * @returns {DateTime}
+     *
+     * @memberOf DateTime
+     */
     DateTime.prototype.copy = function () {
         return new DateTime(this);
     };
@@ -571,6 +562,15 @@ export var DateTime = (function () {
         }
         return DateTime.format(this._date, format, this._offset);
     };
+    /**
+     * Adds time to the date.
+     *
+     * @param {number} value An amount of time.
+     * @param {string} unit A unit of time ('year', 'quarter', 'month', 'week', 'day', 'hour', 'minute', 'second', 'millisecond').
+     * @returns {DateTime} The current DateTime instance.
+     *
+     * @memberOf DateTime
+     */
     DateTime.prototype.add = function (value, unit) {
         if (this.isEmpty() || !value) {
             return this;
@@ -611,6 +611,15 @@ export var DateTime = (function () {
         this._date = date;
         return this;
     };
+    /**
+     * Subtracts time from the date.
+     *
+     * @param {number} value An amount of time.
+     * @param {string} unit A unit of time ('year', 'quarter', 'month', 'week', 'day', 'hour', 'minute', 'second', 'millisecond').
+     * @returns {DateTime} The current DateTime instance.
+     *
+     * @memberOf DateTime
+     */
     DateTime.prototype.subtract = function (value, unit) {
         return this.add(value * -1, unit);
     };
