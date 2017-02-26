@@ -496,14 +496,17 @@ export class DateTime {
             .replace(/K+/, dateParts.timeZone);
     }
 
-    public static parseTimeZone(timeZone: string): number {
+    public static parseTimeZone(timeZone: number | string): number {
         if (!timeZone) {
             return 0;
         }
 
-        timeZone = timeZone.replace(/GMT/gi, '');
+        if (typeof timeZone === 'number') {
+            return timeZone;
+        }
 
-        let parts = /^(?:Z|([+-]?)(2[0-3]|[01][0-9]):([0-5][0-9]))$/.exec(timeZone);
+        let _timeZone = timeZone.replace(/GMT/gi, ''),
+            parts = /^(?:Z|([+-]?)(2[0-3]|[01][0-9]):([0-5][0-9]))$/.exec(_timeZone);
 
         if (!parts || parts.length !== 4) {
             return 0;
@@ -518,6 +521,10 @@ export class DateTime {
 
         if (offset !== 0 && parts[1] === '-') {
             offset *= -1;
+        }
+
+        if (!DateTime.isValidTimeZoneOffset(offset)) {
+            return 0;
         }
 
         return offset;
@@ -716,17 +723,25 @@ export class DateTime {
      */
     public offset(): number;
     /**
-     * Sets the UTC offset of the date.
+     * Sets the UTC offset of the date. Does not change the time.
      * 
-     * @param {number} offset A number between -720 and 840, representing the offset.
+     * @param {number | string} offset A number between -720 and 840, or a string representing the offset. The string can be in one of the following formats 'Z', '00:00', '-00:00', '+00:00', '01:30', '-01:30', '+01:30', 'GMTZ', 'GMT+01:30', 'GMT-01:30'.
      * @returns {DateTime} The current DateTime instance.
      * 
      * @memberOf DateTime
      */
-    public offset(offset: number): DateTime;
-    public offset(offset?: number): any {
+    public offset(offset: number | string): DateTime;
+    public offset(offset?: any): any {
         if (arguments.length === 0) {
             return this._offset;
+        }
+
+        if (typeof offset === 'string') {
+            offset = DateTime.parseTimeZone(offset);
+        }
+
+        if (!DateTime.isValidTimeZoneOffset(offset)) {
+            return;
         }
 
         this._offset = offset;

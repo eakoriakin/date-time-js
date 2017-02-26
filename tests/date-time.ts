@@ -495,6 +495,10 @@ describe('DateTime', () => {
             expect(DateTime.parseTimeZone('--00:00')).toEqual(0);
             expect(DateTime.parseTimeZone('24:00')).toEqual(0);
             expect(DateTime.parseTimeZone('00:60')).toEqual(0);
+
+            // Numbers.
+            expect(DateTime.parseTimeZone(0)).toEqual(0);
+            expect(DateTime.parseTimeZone(60)).toEqual(60);
         });
     });
 
@@ -835,6 +839,10 @@ describe('DateTime', () => {
             date.offset(-180);
             expect(date.offset()).toEqual(-180);
             expect(date.format()).toEqual('2015-02-21T10:45:30-03:00');
+
+            date.offset('01:30');
+            expect(date.offset()).toEqual(90);
+            expect(date.format()).toEqual('2015-02-21T10:45:30+01:30');
         });
     });
 

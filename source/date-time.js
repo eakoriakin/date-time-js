@@ -456,8 +456,10 @@ export var DateTime = (function () {
         if (!timeZone) {
             return 0;
         }
-        timeZone = timeZone.replace(/GMT/gi, '');
-        var parts = /^(?:Z|([+-]?)(2[0-3]|[01][0-9]):([0-5][0-9]))$/.exec(timeZone);
+        if (typeof timeZone === 'number') {
+            return timeZone;
+        }
+        var _timeZone = timeZone.replace(/GMT/gi, ''), parts = /^(?:Z|([+-]?)(2[0-3]|[01][0-9]):([0-5][0-9]))$/.exec(_timeZone);
         if (!parts || parts.length !== 4) {
             return 0;
         }
@@ -468,6 +470,9 @@ export var DateTime = (function () {
         var offset = Number(parts[2]) * 60 + Number(parts[3]);
         if (offset !== 0 && parts[1] === '-') {
             offset *= -1;
+        }
+        if (!DateTime.isValidTimeZoneOffset(offset)) {
+            return 0;
         }
         return offset;
     };
@@ -499,6 +504,12 @@ export var DateTime = (function () {
     DateTime.prototype.offset = function (offset) {
         if (arguments.length === 0) {
             return this._offset;
+        }
+        if (typeof offset === 'string') {
+            offset = DateTime.parseTimeZone(offset);
+        }
+        if (!DateTime.isValidTimeZoneOffset(offset)) {
+            return;
         }
         this._offset = offset;
         return this;
