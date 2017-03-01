@@ -573,15 +573,6 @@ export var DateTime = (function () {
         }
         return DateTime.format(this._date, format, this._offset);
     };
-    /**
-     * Adds time to the date.
-     *
-     * @param {number} value An amount of time.
-     * @param {string} unit A unit of time ('year', 'quarter', 'month', 'week', 'day', 'hour', 'minute', 'second', 'millisecond').
-     * @returns {DateTime} The current DateTime instance.
-     *
-     * @memberOf DateTime
-     */
     DateTime.prototype.add = function (value, unit) {
         if (this.isEmpty() || !value) {
             return this;
@@ -615,6 +606,9 @@ export var DateTime = (function () {
                 break;
             case 'millisecond':
                 date.setTime(date.getTime() + value);
+                break;
+            case 'offset':
+                date.setTime(date.getTime() + DateTime.parseTimeZone(value) * 60000);
                 break;
             default:
                 break;

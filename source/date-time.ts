@@ -723,7 +723,7 @@ export class DateTime {
      */
     public offset(): number;
     /**
-     * Sets the UTC offset of the date. Does not change the time.
+     * Sets the UTC offset of the date. Does not change the time of the date.
      * 
      * @param {number | string} offset A number between -720 and 840, or a string representing the offset. The string can be in one of the following formats 'Z', '00:00', '-00:00', '+00:00', '01:30', '-01:30', '+01:30', 'GMTZ', 'GMT+01:30', 'GMT-01:30'.
      * @returns {DateTime} The current DateTime instance.
@@ -830,14 +830,15 @@ export class DateTime {
     }
 
     /**
-     * Adds time to the date.
+     * Adds time to the date. If a unit of time is 'offset' then the method adds an offset to the date after converting it to minutes (it does not change the offset of the date).
      * 
-     * @param {number} value An amount of time.
-     * @param {string} unit A unit of time ('year', 'quarter', 'month', 'week', 'day', 'hour', 'minute', 'second', 'millisecond').
+     * @param {number | string} value An amount of time. A unit of time representing the offset ('offset') can be a number between -720 and 840, or a string. The string can be in one of the following formats 'Z', '00:00', '-00:00', '+00:00', '01:30', '-01:30', '+01:30', 'GMTZ', 'GMT+01:30', 'GMT-01:30'.
+     * @param {string} unit A unit of time ('year', 'quarter', 'month', 'week', 'day', 'hour', 'minute', 'second', 'millisecond', 'offset').
      * @returns {DateTime} The current DateTime instance.
      * 
      * @memberOf DateTime
      */
+    public add(value: number | string, unit: string): DateTime;
     public add(value: number, unit: string): DateTime {
         if (this.isEmpty() || !value) {
             return this;
@@ -873,6 +874,9 @@ export class DateTime {
                 break;
             case 'millisecond':
                 date.setTime(date.getTime() + value);
+                break;
+            case 'offset':
+                date.setTime(date.getTime() + DateTime.parseTimeZone(value) * 60000);
                 break;
             default:
                 break;

@@ -596,6 +596,22 @@ describe('DateTime', () => {
             date.add(2, 'year');
             expect(date.format()).toEqual('2017-02-21T10:45:30Z');
         });
+
+        // Offset.
+        it('adds offset', () => {
+            let date = new DateTime('2015-02-21T10:45:30Z');
+            date.add(-180, 'offset');
+            expect(date.offset()).toEqual(0);
+            expect(date.format()).toEqual('2015-02-21T07:45:30Z');
+
+            date.add('01:30', 'offset');
+            expect(date.offset()).toEqual(0);
+            expect(date.format()).toEqual('2015-02-21T09:15:30Z');
+
+            date.add('-01:00', 'offset');
+            expect(date.offset()).toEqual(0);
+            expect(date.format()).toEqual('2015-02-21T08:15:30Z');
+        });
     });
 
     describe('subtract method', () => {
