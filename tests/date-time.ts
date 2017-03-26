@@ -878,4 +878,20 @@ describe('DateTime', () => {
 
         expect(formattedDate).toEqual('2010-04-25T20:10:10.009-03:00');
     });
+
+    describe('copy method', () => {
+        it('copies date', () => {
+            let date = new DateTime('2015-02-21T10:45:00Z'),
+                date1 = date.copy();
+
+            expect(date1 === date).toEqual(false);
+            expect(date1.format()).toEqual('2015-02-21T10:45:00Z');
+
+            let emptyDate = DateTime.createEmpty(),
+                date2 = emptyDate.copy();
+
+            expect(emptyDate === date2).toEqual(false);
+            expect(date2.isEmpty()).toEqual(true);
+        });
+    });
 });
