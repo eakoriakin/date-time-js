@@ -321,7 +321,7 @@ describe('DateTime', () => {
 
     describe('format method', () => {
         it('returns null if date is empty', () => {
-            expect(new DateTime(null).format()).toEqual(null);
+            expect(new DateTime(null).format()).toEqual('');
         });
 
         it('formats date', () => {
@@ -515,11 +515,11 @@ describe('DateTime', () => {
 
             // Minimun time zone is -12:00.
             expect(formatTimeZone(-720)).toEqual('-12:00');
-            expect(formatTimeZone(-721)).toEqual(null);
+            expect(formatTimeZone(-721)).toEqual('');
 
             // Maximum time zone is 14:00.
             expect(formatTimeZone(840)).toEqual('+14:00');
-            expect(formatTimeZone(841)).toEqual(null);
+            expect(formatTimeZone(841)).toEqual('');
         });
     });
 

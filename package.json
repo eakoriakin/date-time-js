@@ -1,5 +1,5 @@
 {
-    "version": "1.0.4",
+    "version": "1.0.5",
     "name": "date-time-js",
     "title": "DateTimeJS",
     "description": "A lightweight TypeScript library which parses, formats and manipulates dates in various cultures.",

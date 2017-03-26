@@ -180,11 +180,11 @@ export var DateTime = (function () {
             return 'Z';
         }
         if (!DateTime.isInteger(offset)) {
-            return null;
+            return '';
         }
         // Time zones vary from -12:00 to 14:00.
         if (offset < -720 || offset > 840) {
-            return null;
+            return '';
         }
         var sign = '+';
         if (offset < 0) {
@@ -304,7 +304,7 @@ export var DateTime = (function () {
             parameters[_i - 1] = arguments[_i];
         }
         if (!DateTime.isDate(date) && !DateTime.isDateTime(date)) {
-            return null;
+            return '';
         }
         var format, offset = 0;
         if (parameters.length === 1) {
@@ -314,7 +314,7 @@ export var DateTime = (function () {
             else {
                 offset = parameters[0];
                 if (!DateTime.isValidTimeZoneOffset(offset)) {
-                    return null;
+                    return '';
                 }
             }
         }
@@ -322,7 +322,7 @@ export var DateTime = (function () {
             format = parameters[0];
             offset = parameters[1];
             if (!DateTime.isValidTimeZoneOffset(offset)) {
-                return null;
+                return '';
             }
         }
         format = format || 'yyyy-MM-ddTHH:mm:ssK';
@@ -569,7 +569,7 @@ export var DateTime = (function () {
     };
     DateTime.prototype.format = function (format) {
         if (this.isEmpty()) {
-            return null;
+            return '';
         }
         return DateTime.format(this._date, format, this._offset);
     };

@@ -157,12 +157,12 @@ export class DateTime {
         }
 
         if (!DateTime.isInteger(offset)) {
-            return null;
+            return '';
         }
 
         // Time zones vary from -12:00 to 14:00.
         if (offset < -720 || offset > 840) {
-            return null;
+            return '';
         }
 
         let sign = '+';
@@ -325,7 +325,7 @@ export class DateTime {
     */
     public static format(date: any, ...parameters: any[]): string {
         if (!DateTime.isDate(date) && !DateTime.isDateTime(date)) {
-            return null;
+            return '';
         }
 
         let format: string,
@@ -338,7 +338,7 @@ export class DateTime {
                 offset = parameters[0];
 
                 if (!DateTime.isValidTimeZoneOffset(offset)) {
-                    return null;
+                    return '';
                 }
             }
         } else if (parameters.length === 2) {
@@ -346,7 +346,7 @@ export class DateTime {
             offset = parameters[1];
 
             if (!DateTime.isValidTimeZoneOffset(offset)) {
-                return null;
+                return '';
             }
         }
 
@@ -823,7 +823,7 @@ export class DateTime {
 
     public format(format?: string): string {
         if (this.isEmpty()) {
-            return null;
+            return '';
         }
 
         return DateTime.format(this._date, format, this._offset);
