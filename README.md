@@ -9,7 +9,8 @@
 
 ## Overview
 
-A lightweight TypeScript library which parses, formats and manipulates dates in various cultures.
+A lightweight TypeScript library which parses, formats and manipulates dates in various cultures.  
+DateTimeJS uses the [ISO 8601 datetime format](https://www.w3.org/TR/NOTE-datetime) for its value.
 
 ## Download
 Download it using npm:
