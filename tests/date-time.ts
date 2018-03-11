@@ -287,6 +287,15 @@ describe('DateTime', () => {
             expect(date.millisecond()).toEqual(500);
         });
 
+        it('parses milliseconds', () => {
+            expect(DateTime.parse('2015-02-21T10:00:00.0Z').format('yyyy-MM-ddTHH:mm:ss.fffK')).toEqual('2015-02-21T10:00:00.000Z');
+            expect(DateTime.parse('2015-02-21T10:00:00.00Z').format('yyyy-MM-ddTHH:mm:ss.fffK')).toEqual('2015-02-21T10:00:00.000Z');
+            expect(DateTime.parse('2015-02-21T10:00:00.000Z').format('yyyy-MM-ddTHH:mm:ss.fffK')).toEqual('2015-02-21T10:00:00.000Z');
+            expect(DateTime.parse('2015-02-21T10:00:00.2Z').format('yyyy-MM-ddTHH:mm:ss.fffK')).toEqual('2015-02-21T10:00:00.002Z');
+            expect(DateTime.parse('2015-02-21T10:00:00.25Z').format('yyyy-MM-ddTHH:mm:ss.fffK')).toEqual('2015-02-21T10:00:00.025Z');
+            expect(DateTime.parse('2015-02-21T10:00:00.256Z').format('yyyy-MM-ddTHH:mm:ss.fffK')).toEqual('2015-02-21T10:00:00.256Z');
+        });
+
         it('supports specific en-GB formats', () => {
             expect(DateTime.parse('Feb 21, 15').format()).toEqual('2015-02-21T00:00:00Z');
             expect(DateTime.parse('Feb21,15').format()).toEqual('2015-02-21T00:00:00Z');

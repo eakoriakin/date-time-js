@@ -170,6 +170,8 @@ Supports cultures: en-GB, en-US, ru-RU, uk-UA.
 
 | Format specifier | Description | Examples |
 | :---- | :---- | :---- |
+| f | The milliseconds, from 0 to 9. | 2015-02-01T03:05:09.4Z -> 4 |
+| ff | The milliseconds, from 00 to 99. | 2015-02-01T03:05:09.49Z -> 49 |
 | fff | The milliseconds, from 000 to 999. | 2015-02-01T03:05:09.499Z -> 499 |
 | s | The second, from 0 through 59. | 2015-02-01T03:05:09Z -> 9<br/>2015-02-21T13:45:30Z -> 30 |
 | ss | The second, from 00 through 59. | 2015-02-01T03:05:09Z -> 09<br/>2015-02-21T13:45:30Z -> 30 |

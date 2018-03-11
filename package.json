@@ -1,5 +1,5 @@
 {
-    "version": "1.0.5",
+    "version": "1.0.6",
     "name": "date-time-js",
     "title": "DateTimeJS",
     "description": "A lightweight TypeScript library which parses, formats and manipulates dates in various cultures.",
@@ -29,22 +29,23 @@
         "url": "https://github.com/eakoriakin/date-time-js/issues"
     },
     "devDependencies": {
-        "typescript": "2.0.9",
-        "tslint": "4.4.2",
+        "@types/karma-jasmine": "0.0.27",
+        "buffer": "5.1.0",
         "del": "2.2.2",
         "gulp": "3.9.1",
+        "gulp-concat": "2.6.1",
         "gulp-sourcemaps": "2.4.1",
         "gulp-tslint": "7.0.1",
         "gulp-typescript": "3.1.5",
-        "gulp-concat": "2.6.1",
-        "run-sequence": "1.2.2",
-        "merge2": "1.0.3",
+        "jasmine-core": "2.5.2",
         "karma": "1.5.0",
-        "karma-typescript": "2.1.7",
         "karma-chrome-launcher": "2.0.0",
         "karma-jasmine": "1.1.0",
-        "jasmine-core": "2.5.2",
-        "@types/karma-jasmine": "0.0.27"
+        "karma-typescript": "2.1.7",
+        "merge2": "1.0.3",
+        "run-sequence": "1.2.2",
+        "tslint": "4.4.2",
+        "typescript": "2.0.9"
     },
     "main": "./date-time.js",
     "types": "./date-time.d.ts"

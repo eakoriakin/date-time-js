@@ -271,7 +271,7 @@ export var DateTime = (function () {
         }
         // 2015-02-21T10:00:00Z
         // 2015-02-21T10:00:00.652+03:00
-        pattern = /^(\d{4})(\/|-|\.|\s)(\d{1,2})(\/|-|\.|\s)(\d{1,2})T(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)(\.(\d{3}))?(?:Z|([+-])(2[0-3]|[01][0-9]):([0-5][0-9]))$/;
+        pattern = /^(\d{4})(\/|-|\.|\s)(\d{1,2})(\/|-|\.|\s)(\d{1,2})T(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)(\.(\d{1,3}))?(?:Z|([+-])(2[0-3]|[01][0-9]):([0-5][0-9]))$/;
         if (value.match(pattern) !== null) {
             parts = pattern.exec(value);
             var offset = 0;
@@ -329,7 +329,7 @@ export var DateTime = (function () {
         var languageIndex = 2, timeZone = DateTime.formatTimeZone(offset), _date = DateTime.isDateTime(date) ? date.toDate() : date, 
         // Possible formats of date parts (day, month, year).
         datePartFormats = {
-            f: ['fff'],
+            f: ['f', 'ff', 'fff'],
             s: ['s', 'ss'],
             m: ['m', 'mm'],
             H: ['H', 'HH'],
@@ -416,8 +416,16 @@ export var DateTime = (function () {
                 case datePartFormats.s[1]:
                     datePart = DateTime.formatNumber(seconds, 2);
                     break;
-                // fff
+                // f
                 case datePartFormats.f[0]:
+                    datePart = milliseconds;
+                    break;
+                // ff
+                case datePartFormats.f[1]:
+                    datePart = DateTime.formatNumber(milliseconds, 2);
+                    break;
+                // fff
+                case datePartFormats.f[2]:
                     datePart = DateTime.formatNumber(milliseconds, 3);
                     break;
                 // K
