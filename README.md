@@ -9,7 +9,7 @@
 
 ## Overview
 
-A lightweight TypeScript library which parses, formats and manipulates dates in various cultures.
+A lightweight TypeScript library which parses, formats and manipulates dates in various cultures using [ISO 8601 Date and time format](https://www.iso.org/iso-8601-date-and-time-format.html).
 
 ## Download
 Download it using npm:
